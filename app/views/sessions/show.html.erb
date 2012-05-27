@@ -5,16 +5,44 @@
   <%= @session.name %>
 </p>
 
-<p>
-  <b>Despair:</b>
-  <%= @session.despair %>
-</p>
+<table>
+  <%= form_tag(roll_dice_pools_path, :remote => true) do -%>
+    <tbody>
+      <tr>
+        <td><b><%= label_tag :discipline %></b></td>
+        <td><%= text_field_tag :discipline, '', :size => 3 %></td>
+      </tr>
+      <tr>
+        <td><b><%= label_tag :exhaustion %></b></td>
+        <td><%= text_field_tag :exhaustion, '', :size => 3 %></td>
+      </tr>
+      <tr>
+        <td><b><%= label_tag :madness %></b></td>
+        <td><%= text_field_tag :madness, '', :size => 3 %></td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td><%= submit_tag "Roll dice" %></td>
+      </tr>
+    </tfoot>
+  <% end -%>
+</table><br />
 
-<p>
-  <b>Hope:</b>
-  <%= @session.hope %>
-</p>
+<p id="results"></p>
 
+<table>
+  <tbody>
+    <tr>
+      <td><b>Despair:</b></td>
+      <td><%= @session.despair %></td>
+    </tr>
+    <tr>
+      <td><b>Hope:</b></td>
+      <td><%= @session.hope %></td>
+    </tr>
+  </tbody>
+</table>
 
 <%= link_to 'Edit', edit_session_path(@session) %> |
 <%= link_to 'Back', sessions_path %>

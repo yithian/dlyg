@@ -14,6 +14,8 @@ class SessionsController < ApplicationController
   # GET /sessions/1.json
   def show
     @session = Session.find(params[:id])
+    
+    @dice_pool = DiceRoller::DicePool.new
 
     respond_to do |format|
       format.html # show.html.erb
