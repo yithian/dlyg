@@ -55,6 +55,7 @@ class DicePoolsController < ApplicationController
     successes = {discipline_strength => :discipline, exhaustion_strength => :exhaustion, madness_strength => :exhaustion, pain_strength => :pain}
     
     @wins = successes[successes.keys.max]
+    @wins = :player unless @wins == :pain
     
     dominant = {discipline.sort.reverse => :discipline, exhaustion.sort.reverse => :exhaustion, madness.sort.reverse => :madness, pain.sort.reverse => :pain}
     
