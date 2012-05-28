@@ -11,3 +11,11 @@
  *= require_self
  *= require_tree .
 */
+
+#d_results { color: gray; }
+#e_results { color: black; }
+#m_results { color: red; }
+#p_results {
+	background: black;
+	color: white;
+}

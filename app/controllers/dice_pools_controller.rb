@@ -10,10 +10,10 @@ class DicePoolsController < ApplicationController
     pain_strength = 0
     
     pool = DiceRoller::DicePool.new(0, params[:discipline].to_i)
-    discipline = pool.roll_pool.six_result.sort
+    @discipline = pool.roll_pool.six_result.sort.reverse
     discipline_strength = 0
 
-    discipline.each do |d|
+    @discipline.each do |d|
       if d <= 3
         @strength += 1
         discipline_strength += 1
@@ -21,10 +21,10 @@ class DicePoolsController < ApplicationController
     end
     
     pool.num_six = params[:exhaustion].to_i
-    exhaustion = pool.roll_pool.six_result.sort
+    @exhaustion = pool.roll_pool.six_result.sort.reverse
     exhaustion_strength = 0
     
-    exhaustion.each do |e|
+    @exhaustion.each do |e|
       if e <= 3
         @strength += 1
         exhaustion_strength += 1
@@ -32,10 +32,10 @@ class DicePoolsController < ApplicationController
     end
     
     pool.num_six = params[:madness].to_i
-    madness = pool.roll_pool.six_result.sort
+    @madness = pool.roll_pool.six_result.sort.reverse
     madness_strength = 0
     
-    madness.each do |m|
+    @madness.each do |m|
       if m <= 3
         @strength += 1
         madness_strength += 1
@@ -43,10 +43,10 @@ class DicePoolsController < ApplicationController
     end
     
     pool.num_six = params[:pain].to_i
-    pain = pool.roll_pool.six_result.sort
+    @pain = pool.roll_pool.six_result.sort.reverse
     pain_strength = 0
     
-    pain.each do |p|
+    @pain.each do |p|
       if p <= 3
         pain_strength += 1
       end
@@ -57,7 +57,7 @@ class DicePoolsController < ApplicationController
     @wins = successes[successes.keys.max]
     @wins = :player unless @wins == :pain
     
-    dominant = {discipline.sort.reverse => :discipline, exhaustion.sort.reverse => :exhaustion, madness.sort.reverse => :madness, pain.sort.reverse => :pain}
+    dominant = {@discipline => :discipline, @exhaustion => :exhaustion, @madness => :madness, @pain => :pain}
     
     @dominating = dominant[dominant.keys.max]
     
