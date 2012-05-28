@@ -48,7 +48,6 @@ class DicePoolsController < ApplicationController
     
     pain.each do |p|
       if p <= 3
-        @strength += 1
         pain_strength += 1
       end
     end
