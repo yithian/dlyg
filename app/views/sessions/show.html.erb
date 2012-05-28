@@ -20,6 +20,10 @@
         <td><b><%= label_tag :madness %></b></td>
         <td><%= text_field_tag :madness, '', :size => 3 %></td>
       </tr>
+      <tr>
+        <td><b><%= label_tag :pain %></b></td>
+        <td><%= text_field_tag :pain, '', :size => 3 %></td>
+      </tr>
     </tbody>
     <tfoot>
       <tr>
@@ -36,10 +40,12 @@
     <tr>
       <td><b>Despair:</b></td>
       <td><%= @session.despair %></td>
+      <td>Cast a shadow</td>
     </tr>
     <tr>
       <td><b>Hope:</b></td>
       <td><%= @session.hope %></td>
+      <td>Shed light</td>
     </tr>
   </tbody>
 </table>
