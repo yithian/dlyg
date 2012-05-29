@@ -173,8 +173,7 @@ class SessionsController < ApplicationController
   def cast_shadow
     @session = Session.find(params[:id])
     
-    @session.despair -= 1
-    @session.hope += 1
+    @session.cast_shadow(1)
     @session.save
     
     respond_to do |format|
@@ -186,7 +185,7 @@ class SessionsController < ApplicationController
   def shed_light
     @session = Session.find(params[:id])
     
-    @session.hope -= 1
+    @session.shed_light(1)
     @session.save
     
     respond_to do |format|
