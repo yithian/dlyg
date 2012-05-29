@@ -87,6 +87,8 @@ class SessionsController < ApplicationController
   
   # POST /sessions/1/roll_dice
   def roll_dice
+    @session = Session.find(params[:id])
+    
     @degree = 0
     @pain = 0
     discipline_degree = 0
@@ -155,6 +157,12 @@ class SessionsController < ApplicationController
     dominant = {@pain => :pain, @exhaustion => :exhaustion, @madness => :madness, @discipline => :discipline }
     
     @dominating = dominant[dominant.keys.max]
+    
+    # bump despair count if pain is dominant
+    if @dominating == :pain
+      @session.despair += 1
+      @session.save!
+    end
     
     respond_to do |format|
       format.js
