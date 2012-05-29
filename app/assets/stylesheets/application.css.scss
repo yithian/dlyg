@@ -29,6 +29,8 @@ $pain_background: $discipline_color;
     padding-right: .5em;
 }
 
+input[type="number"] { width: 3em; }
+
 #d_results {
     color: $discipline_color;
     background: $discipline_background;
