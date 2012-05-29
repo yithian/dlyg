@@ -90,7 +90,6 @@ class SessionsController < ApplicationController
     @session = Session.find(params[:id])
     
     @degree = 0
-    @pain = 0
     discipline_degree = 0
     exhaustion_degree = 0
     madness_degree = 0
@@ -99,7 +98,6 @@ class SessionsController < ApplicationController
     # count degree of player pools
     pool = DiceRoller::DicePool.new(0, params[:discipline].to_i)
     @discipline = pool.roll_pool.six_result.sort.reverse
-    discipline_degree = 0
 
     @discipline.each do |d|
       if d <= 3
@@ -110,7 +108,6 @@ class SessionsController < ApplicationController
     
     pool.num_six = params[:exhaustion].to_i
     @exhaustion = pool.roll_pool.six_result.sort.reverse
-    exhaustion_degree = 0
     
     @exhaustion.each do |e|
       if e <= 3
@@ -121,7 +118,6 @@ class SessionsController < ApplicationController
     
     pool.num_six = params[:madness].to_i
     @madness = pool.roll_pool.six_result.sort.reverse
-    madness_degree = 0
     
     @madness.each do |m|
       if m <= 3
@@ -133,7 +129,6 @@ class SessionsController < ApplicationController
     # count degree of pain
     pool.num_six = params[:pain].to_i
     @pain = pool.roll_pool.six_result.sort.reverse
-    pain_degree = 0
     
     @pain.each do |p|
       if p <= 3
