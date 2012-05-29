@@ -87,64 +87,64 @@ class SessionsController < ApplicationController
   
   # POST /sessions/1/roll_dice
   def roll_dice
-    @strength = 0
+    @degree = 0
     @pain = 0
-    discipline_strength = 0
-    exhaustion_strength = 0
-    madness_strength = 0
-    pain_strength = 0
+    discipline_degree = 0
+    exhaustion_degree = 0
+    madness_degree = 0
+    pain_degree = 0
     
-    # count strength of player pools
+    # count degree of player pools
     pool = DiceRoller::DicePool.new(0, params[:discipline].to_i)
     @discipline = pool.roll_pool.six_result.sort.reverse
-    discipline_strength = 0
+    discipline_degree = 0
 
     @discipline.each do |d|
       if d <= 3
-        @strength += 1
-        discipline_strength += 1
+        @degree += 1
+        discipline_degree += 1
       end
     end
     
     pool.num_six = params[:exhaustion].to_i
     @exhaustion = pool.roll_pool.six_result.sort.reverse
-    exhaustion_strength = 0
+    exhaustion_degree = 0
     
     @exhaustion.each do |e|
       if e <= 3
-        @strength += 1
-        exhaustion_strength += 1
+        @degree += 1
+        exhaustion_degree += 1
       end
     end
     
     pool.num_six = params[:madness].to_i
     @madness = pool.roll_pool.six_result.sort.reverse
-    madness_strength = 0
+    madness_degree = 0
     
     @madness.each do |m|
       if m <= 3
-        @strength += 1
-        madness_strength += 1
+        @degree += 1
+        madness_degree += 1
       end
     end
     
-    # count strength of pain
+    # count degree of pain
     pool.num_six = params[:pain].to_i
     @pain = pool.roll_pool.six_result.sort.reverse
-    pain_strength = 0
+    pain_degree = 0
     
     @pain.each do |p|
       if p <= 3
-        pain_strength += 1
+        pain_degree += 1
       end
     end
     
     # determine who wins
-    if @strength > pain_strength
+    if @degree > pain_degree
       @wins = :player
     else
       @wins = :pain
-      @strength = pain_strength
+      @degree = pain_degree
     end
     
     # determine which pool is dominant
