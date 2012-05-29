@@ -161,7 +161,7 @@ class SessionsController < ApplicationController
     # bump despair count if pain is dominant
     if @dominating == :pain
       @session.despair += 1
-      @session.save!
+      @session.save
     end
     
     respond_to do |format|
