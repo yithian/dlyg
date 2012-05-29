@@ -42,9 +42,11 @@
 <table>
   <tbody>
     <tr>
-      <td><b>Despair:</b></td>
+      <td class="short"><b>Despair:</b></td>
       <td id="despair"><%= @game.despair %></td>
-      <td>
+    </tr>
+    <tr>
+      <td colspan="2">
         <%= form_for @game, :method => :put, :url => cast_shadow_game_path, :remote => true do |f| -%>
           Remove <%= text_field_tag :despair_coins, '1', :size => 3 %> coin(s) to
           <%= f.submit 'cast a shadow' %>
@@ -52,9 +54,11 @@
       </td>
     </tr>
     <tr>
-      <td><b>Hope:</b></td>
+      <td class="short"><b>Hope:</b></td>
       <td id="hope"><%= @game.hope %></td>
-      <td>
+    </tr>
+    <tr>
+      <td colspan="2">
         <%= form_for @game, :method => :put, :url => shed_light_game_path, :remote => true do |f| -%>
           Remove <%= text_field_tag :hope_coins, '1', :size => 3 %> coin(s) to
           <%= f.submit 'shed light' %>

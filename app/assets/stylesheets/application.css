@@ -19,3 +19,7 @@
 	background: black;
 	color: white;
 }
+.short {
+    width: 1%;
+    white-space: nowrap;
+}
