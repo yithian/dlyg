@@ -10,22 +10,22 @@
     <tbody>
       <tr>
         <td><b><%= label_tag :discipline %></b></td>
-        <td><%= text_field_tag :discipline, '', :size => 3, :autocomplete => :off %></td>
+        <td><%= number_field_tag :discipline, '', :size => 3, :autocomplete => :off %></td>
         <td id="d_results" style="display: none"></td>
       </tr>
       <tr>
         <td><b><%= label_tag :exhaustion %></b></td>
-        <td><%= text_field_tag :exhaustion, '', :size => 3, :autocomplete => :off %></td>
+        <td><%= number_field_tag :exhaustion, '', :size => 3, :autocomplete => :off %></td>
         <td id="e_results" style="display: none"></td>
       </tr>
       <tr>
         <td><b><%= label_tag :madness %></b></td>
-        <td><%= text_field_tag :madness, '', :size => 3, :autocomplete => :off %></td>
+        <td><%= number_field_tag :madness, '', :size => 3, :autocomplete => :off %></td>
         <td id="m_results" style="display: none"></td>
       </tr>
       <tr>
         <td><b><%= label_tag :pain %></b></td>
-        <td><%= text_field_tag :pain, '', :size => 3, :autocomplete => :off %></td>
+        <td><%= number_field_tag :pain, '', :size => 3, :autocomplete => :off %></td>
         <td id="p_results" style="display: none"></td>
       </tr>
     </tbody>
@@ -48,7 +48,7 @@
     <tr>
       <td colspan="2">
         <%= form_for @game, :method => :put, :url => cast_shadow_game_path, :remote => true do |f| -%>
-          Remove <%= text_field_tag :despair_coins, '1', :size => 3, :autocomplete => :off %> coin(s) to
+          Remove <%= number_field_tag :despair_coins, '1', :size => 3, :autocomplete => :off %> coin(s) to
           <%= f.submit 'cast a shadow' %>
         <% end -%>
       </td>
@@ -60,7 +60,7 @@
     <tr>
       <td colspan="2">
         <%= form_for @game, :method => :put, :url => shed_light_game_path, :remote => true do |f| -%>
-          Remove <%= text_field_tag :hope_coins, '1', :size => 3, :autocomplete => :off %> coin(s) to
+          Remove <%= number_field_tag :hope_coins, '1', :size => 3, :autocomplete => :off %> coin(s) to
           <%= f.submit 'shed light' %>
         <% end -%>
       </td>
