@@ -1,6 +1,10 @@
-$('#results').html('<%= "#{@wins} wins with a degree of #{@degree}, dominant: #{@dominating}" %>');
+$('#results').html('<%= "#{@wins} wins with a degree of #{@degree}, with #{@dominating} dominant" %>');
 $('#d_results').html('<%= @discipline %>');
+$('#d_results').show();
 $('#e_results').html('<%= @exhaustion %>');
+$('#e_results').show();
 $('#m_results').html('<%= @madness %>');
+$('#m_results').show();
 $('#p_results').html('<%= @pain %>');
+$('#p_results').show();
 $('#despair').html('<%= @game.despair %>');

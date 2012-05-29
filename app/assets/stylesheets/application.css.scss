@@ -1,0 +1,57 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+*/
+
+$discipline_color: black;
+$discipline_background: white;
+
+$exhaustion_color: white;
+$exhaustion_background: $discipline_color;
+
+$madness_color: $exhaustion_color;
+$madness_background: red;
+
+$pain_color: $madness_background;
+$pain_background: $discipline_color;
+
+@mixin readable {
+    padding-left: .5em;
+    padding-right: .5em;
+}
+
+#d_results {
+    color: $discipline_color;
+    background: $discipline_background;
+    @include readable;
+}
+#e_results {
+    color: $exhaustion_color;
+    background: $exhaustion_background;
+    @include readable;
+}
+#m_results {
+    color: $madness_color;
+    background: $madness_background;
+    @include readable;
+}
+#p_results {
+	color: $pain_color;
+	background: $pain_background;
+    @include readable;
+}
+
+.short {
+    width: 1%;
+    white-space: nowrap;
+}
+
