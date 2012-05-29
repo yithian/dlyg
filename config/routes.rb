@@ -1,8 +1,7 @@
 Dlyg::Application.routes.draw do
-  resources :sessions
-  resources :dice_pools do
-    collection do
-      post 'roll'
+  resources :sessions do
+    member do
+      post 'roll_dice'
     end
   end
 

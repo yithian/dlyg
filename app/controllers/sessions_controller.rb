@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  respond_to :html, :xml
+
   # GET /sessions
   # GET /sessions.json
   def index
@@ -80,6 +82,76 @@ class SessionsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to sessions_url }
       format.json { head :no_content }
+    end
+  end
+  
+  # POST /sessions/1/roll_dice
+  def roll_dice
+    @strength = 0
+    @pain = 0
+    discipline_strength = 0
+    exhaustion_strength = 0
+    madness_strength = 0
+    pain_strength = 0
+    
+    # count strength of player pools
+    pool = DiceRoller::DicePool.new(0, params[:discipline].to_i)
+    @discipline = pool.roll_pool.six_result.sort.reverse
+    discipline_strength = 0
+
+    @discipline.each do |d|
+      if d <= 3
+        @strength += 1
+        discipline_strength += 1
+      end
+    end
+    
+    pool.num_six = params[:exhaustion].to_i
+    @exhaustion = pool.roll_pool.six_result.sort.reverse
+    exhaustion_strength = 0
+    
+    @exhaustion.each do |e|
+      if e <= 3
+        @strength += 1
+        exhaustion_strength += 1
+      end
+    end
+    
+    pool.num_six = params[:madness].to_i
+    @madness = pool.roll_pool.six_result.sort.reverse
+    madness_strength = 0
+    
+    @madness.each do |m|
+      if m <= 3
+        @strength += 1
+        madness_strength += 1
+      end
+    end
+    
+    # count strength of pain
+    pool.num_six = params[:pain].to_i
+    @pain = pool.roll_pool.six_result.sort.reverse
+    pain_strength = 0
+    
+    @pain.each do |p|
+      if p <= 3
+        pain_strength += 1
+      end
+    end
+    
+    # determine who wins
+    successes = {discipline_strength => :discipline, exhaustion_strength => :exhaustion, madness_strength => :exhaustion, pain_strength => :pain}
+    
+    @wins = successes[successes.keys.max]
+    @wins = :player unless @wins == :pain
+    
+    # determine which pool is dominant
+    dominant = {@discipline => :discipline, @exhaustion => :exhaustion, @madness => :madness, @pain => :pain}
+    
+    @dominating = dominant[dominant.keys.max]
+    
+    respond_to do |format|
+      format.js
     end
   end
 end
