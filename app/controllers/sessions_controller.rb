@@ -168,4 +168,17 @@ class SessionsController < ApplicationController
       format.js
     end
   end
+  
+  # PUT /sessions/1/cast_shadow
+  def cast_shadow
+    @session = Session.find(params[:id])
+    
+    @session.despair -= 1
+    @session.hope += 1
+    @session.save
+    
+    respond_to do |format|
+      format.js
+    end
+  end
 end

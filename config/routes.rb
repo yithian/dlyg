@@ -2,6 +2,7 @@ Dlyg::Application.routes.draw do
   resources :sessions do
     member do
       post 'roll_dice'
+      put 'cast_shadow'
     end
   end
 

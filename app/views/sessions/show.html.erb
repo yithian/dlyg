@@ -44,11 +44,15 @@
     <tr>
       <td><b>Despair:</b></td>
       <td id="despair"><%= @session.despair %></td>
-      <td>Cast a shadow</td>
+      <td>
+        <%= form_for @session, :method => :put, :url => cast_shadow_session_path, :remote => true do |f| -%>
+          <%= f.submit 'Cast a shadow' %>
+        <% end -%>
+      </td>
     </tr>
     <tr>
       <td><b>Hope:</b></td>
-      <td><%= @session.hope %></td>
+      <td id="hope"><%= @session.hope %></td>
       <td>Shed light</td>
     </tr>
   </tbody>
