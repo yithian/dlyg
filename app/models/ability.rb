@@ -5,6 +5,7 @@ class Ability
     user ||= User.new # guest user (not logged in)
     
     can :manage, Game, :gm_id => user.id
+    can :create, Game if user.id
     can :read, :all
 
     # Define abilities for the passed in user here. For example:
