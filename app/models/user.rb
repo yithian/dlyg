@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-  has_many :games, :foreign_key => :gm_id
+  has_many :running_games, :foreign_key => :gm_id
+  has_and_belongs_to_many :games
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
