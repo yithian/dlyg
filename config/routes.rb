@@ -1,4 +1,6 @@
 Dlyg::Application.routes.draw do
+  devise_for :users
+
   resources :games do
     member do
       post 'roll_dice'

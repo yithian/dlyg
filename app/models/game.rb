@@ -1,4 +1,6 @@
 class Game < ActiveRecord::Base
+  belongs_to :gm, :class_name => "User", :foreign_key => "gm", :inverse_of => :games
+
   attr_accessible :despair, :hope, :name
   
   validates :despair, :numericality => {:only_integer => true, :greater_than_or_equal_to => 0}
