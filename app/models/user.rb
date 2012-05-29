@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :games, :inverse_of => :gm
+  has_many :games, :foreign_key => :gm_id
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,

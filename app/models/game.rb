@@ -1,5 +1,5 @@
 class Game < ActiveRecord::Base
-  belongs_to :gm, :class_name => "User", :foreign_key => "gm", :inverse_of => :games
+  belongs_to :gm, :class_name => "User"
 
   attr_accessible :despair, :hope, :name
   
