@@ -181,4 +181,16 @@ class SessionsController < ApplicationController
       format.js
     end
   end
+  
+  # PUT /sessions/1/cast_shadow
+  def shed_light
+    @session = Session.find(params[:id])
+    
+    @session.hope -= 1
+    @session.save
+    
+    respond_to do |format|
+      format.js
+    end
+  end
 end

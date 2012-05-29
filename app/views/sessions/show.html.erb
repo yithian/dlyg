@@ -53,7 +53,11 @@
     <tr>
       <td><b>Hope:</b></td>
       <td id="hope"><%= @session.hope %></td>
-      <td>Shed light</td>
+      <td>
+        <%= form_for @session, :method => :put, :url => shed_light_session_path, :remote => true do |f| -%>
+          <%= f.submit 'Shed light' %>
+        <% end -%>
+      </td>
     </tr>
   </tbody>
 </table>
