@@ -148,7 +148,11 @@ class SessionsController < ApplicationController
     end
     
     # determine which pool is dominant
-    dominant = {@discipline => :discipline, @exhaustion => :exhaustion, @madness => :madness, @pain => :pain}
+    # there is some trickery here: the order of assignment is important.
+    # due to the hierarchy of tie-breakers, "tied" elements assigned later
+    # in the hash will overwrite earlier elements. so later elements
+    # "beat" earlier ones
+    dominant = {@pain => :pain, @exhaustion => :exhaustion, @madness => :madness, @discipline => :discipline }
     
     @dominating = dominant[dominant.keys.max]
     
