@@ -140,10 +140,12 @@ class SessionsController < ApplicationController
     end
     
     # determine who wins
-    successes = {discipline_strength => :discipline, exhaustion_strength => :exhaustion, madness_strength => :exhaustion, pain_strength => :pain}
-    
-    @wins = successes[successes.keys.max]
-    @wins = :player unless @wins == :pain
+    if @strength > pain_strength
+      @wins = :player
+    else
+      @wins = :pain
+      @strength = pain_strength
+    end
     
     # determine which pool is dominant
     dominant = {@discipline => :discipline, @exhaustion => :exhaustion, @madness => :madness, @pain => :pain}
