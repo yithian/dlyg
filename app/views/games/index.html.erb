@@ -2,22 +2,16 @@
 
 <table>
   <tr>
+    <th></th>
     <th>Name</th>
-    <th>Despair</th>
-    <th>Hope</th>
-    <th></th>
-    <th></th>
     <th></th>
   </tr>
 
 <% @games.each do |game| %>
   <tr>
-    <td><%= game.name %></td>
-    <td><%= game.despair %></td>
-    <td><%= game.hope %></td>
-    <td><%= link_to 'Show', game %></td>
-    <td><%= link_to 'Edit', edit_game_path(game) %></td>
-    <td><%= link_to 'Destroy', game, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to image_tag('edit.png'), edit_game_path(game) %></td>
+    <td><%= link_to game.name, game %></td>
+    <td><%= link_to image_tag('delete.png'), game, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
