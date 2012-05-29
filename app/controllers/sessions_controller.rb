@@ -92,6 +92,11 @@ class SessionsController < ApplicationController
     @degree, @wins, @dominating, @discipline, @exhaustion, @madness, @pain = @session.roll(params[:discipline].to_i, params[:exhaustion].to_i, params[:madness].to_i, params[:pain].to_i,)
     @session.save
     
+    @discipline = @discipline.join(', ')
+    @exhaustion = @exhaustion.join(', ')
+    @madness = @madness.join(', ')
+    @pain = @pain.join(', ')
+
     respond_to do |format|
       format.js
     end
