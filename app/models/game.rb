@@ -1,4 +1,4 @@
-class Session < ActiveRecord::Base
+class Game < ActiveRecord::Base
   attr_accessible :despair, :hope, :name
   
   validates :despair, :numericality => {:only_integer => true, :greater_than_or_equal_to => 0}

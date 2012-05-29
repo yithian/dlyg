@@ -1,5 +1,5 @@
 Dlyg::Application.routes.draw do
-  resources :sessions do
+  resources :games do
     member do
       post 'roll_dice'
       put 'cast_shadow'
@@ -7,7 +7,7 @@ Dlyg::Application.routes.draw do
     end
   end
 
-  root :to => 'sessions#index'
+  root :to => 'games#index'
 
   # See how all your routes lay out with "rake routes"
 end
