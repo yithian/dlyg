@@ -89,75 +89,8 @@ class SessionsController < ApplicationController
   def roll_dice
     @session = Session.find(params[:id])
     
-    @degree = 0
-    discipline_degree = 0
-    exhaustion_degree = 0
-    madness_degree = 0
-    pain_degree = 0
-    
-    # count degree of player pools
-    pool = DiceRoller::DicePool.new(0, params[:discipline].to_i)
-    @discipline = pool.roll_pool.six_result.sort.reverse
-
-    @discipline.each do |d|
-      if d <= 3
-        @degree += 1
-        discipline_degree += 1
-      end
-    end
-    
-    pool.num_six = params[:exhaustion].to_i
-    @exhaustion = pool.roll_pool.six_result.sort.reverse
-    
-    @exhaustion.each do |e|
-      if e <= 3
-        @degree += 1
-        exhaustion_degree += 1
-      end
-    end
-    
-    pool.num_six = params[:madness].to_i
-    @madness = pool.roll_pool.six_result.sort.reverse
-    
-    @madness.each do |m|
-      if m <= 3
-        @degree += 1
-        madness_degree += 1
-      end
-    end
-    
-    # count degree of pain
-    pool.num_six = params[:pain].to_i
-    @pain = pool.roll_pool.six_result.sort.reverse
-    
-    @pain.each do |p|
-      if p <= 3
-        pain_degree += 1
-      end
-    end
-    
-    # determine who wins
-    if @degree > pain_degree
-      @wins = :player
-    else
-      @wins = :pain
-      @degree = pain_degree
-    end
-    
-    # determine which pool is dominant
-    # there is some trickery here: the order of assignment is important.
-    # due to the hierarchy of tie-breakers, "tied" elements assigned later
-    # in the hash will overwrite earlier elements. so later elements
-    # "beat" earlier ones
-    dominant = {@pain => :pain, @exhaustion => :exhaustion, @madness => :madness, @discipline => :discipline }
-    
-    @dominating = dominant[dominant.keys.max]
-    
-    # bump despair count if pain is dominant
-    if @dominating == :pain
-      @session.despair += 1
-      @session.save
-    end
+    @degree, @wins, @dominating, @discipline, @exhaustion, @madness, @pain = @session.roll(params[:discipline].to_i, params[:exhaustion].to_i, params[:madness].to_i, params[:pain].to_i,)
+    @session.save
     
     respond_to do |format|
       format.js
