@@ -15,14 +15,17 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
-  <div class="field">
-    <%= f.label :despair %><br />
-    <%= f.number_field :despair %>
-  </div>
-  <div class="field">
-    <%= f.label :hope %><br />
-    <%= f.number_field :hope %>
-  </div>
+
+  <% if params[:action] == 'edit' -%>
+    <div class="field">
+      <%= f.label :despair %><br />
+      <%= f.number_field :despair, :autocomplete => :off %>
+    </div>
+    <div class="field">
+      <%= f.label :hope %><br />
+      <%= f.number_field :hope, :autocomplete => :off %>
+    </div>
+  <% end -%>
   <div class="actions">
     <%= f.submit %>
   </div>
