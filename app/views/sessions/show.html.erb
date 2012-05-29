@@ -11,18 +11,22 @@
       <tr>
         <td><b><%= label_tag :discipline %></b></td>
         <td><%= text_field_tag :discipline, '', :size => 3 %></td>
+        <td id="d_results"></td>
       </tr>
       <tr>
         <td><b><%= label_tag :exhaustion %></b></td>
         <td><%= text_field_tag :exhaustion, '', :size => 3 %></td>
+        <td id="e_results"></td>
       </tr>
       <tr>
         <td><b><%= label_tag :madness %></b></td>
         <td><%= text_field_tag :madness, '', :size => 3 %></td>
+        <td id="m_results"></td>
       </tr>
       <tr>
         <td><b><%= label_tag :pain %></b></td>
         <td><%= text_field_tag :pain, '', :size => 3 %></td>
+        <td id="p_results"></td>
       </tr>
     </tbody>
     <tfoot>
@@ -34,10 +38,6 @@
 </table><br />
 
 <p id="results"></p>
-<p id="d_results"></p>
-<p id="e_results"></p>
-<p id="m_results"></p>
-<p id="p_results"></p>
 
 <table>
   <tbody>
