@@ -106,7 +106,7 @@ class GamesController < ApplicationController
   def cast_shadow
     @game = Game.find(params[:id])
     
-    @game.cast_shadow(params[:coins].to_i)
+    @game.cast_shadow(params[:despair_coins].to_i)
     @game.save
     
     respond_to do |format|
@@ -118,7 +118,7 @@ class GamesController < ApplicationController
   def shed_light
     @game = Game.find(params[:id])
     
-    @game.shed_light(params[:coins].to_i)
+    @game.shed_light(params[:hope_coins].to_i)
     @game.save
     
     respond_to do |format|
