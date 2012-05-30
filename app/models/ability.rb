@@ -5,6 +5,10 @@ class Ability
     user ||= User.new # guest user (not logged in)
     
     can :manage, Game, :gm_id => user.id
+    can :cast_shadow, Game, :gm_id => user.id
+    can :shed_light, Game do |g|
+      g.players.each.collect.include?(user)
+    end
     can :create, Game if user.id
     can :read, :all
 

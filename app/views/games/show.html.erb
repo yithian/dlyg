@@ -48,7 +48,7 @@
         <%= form_for @game, :method => :put, :url => cast_shadow_game_path, :remote => true do |f| -%>
           Remove <%= number_field_tag :despair_coins, '1', :size => 3, :autocomplete => :off %> coin(s) to
           <%= f.submit 'cast a shadow' %>
-        <% end -%>
+        <% end if can? :cast_shadow, @game -%>
       </td>
     </tr>
     <tr>
@@ -60,7 +60,7 @@
         <%= form_for @game, :method => :put, :url => shed_light_game_path, :remote => true do |f| -%>
           Remove <%= number_field_tag :hope_coins, '1', :size => 3, :autocomplete => :off %> coin(s) to
           <%= f.submit 'shed light' %>
-        <% end -%>
+        <% end if can? :shed_light, @game -%>
       </td>
     </tr>
   </tbody>
