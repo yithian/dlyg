@@ -11,7 +11,7 @@
   <tr>
     <td><%= link_to image_tag('edit.png'), edit_game_path(game) if can? :edit, game %></td>
     <td><%= link_to game.name, game %></td>
-    <td><%= link_to image_tag('delete.png'), game, confirm: 'Are you sure?', method: :delete if can? :delete, game %></td>
+    <td><%= link_to image_tag('delete.png'), game, :confirm => 'Are you sure?', :method => :delete if can? :delete, game %></td>
   </tr>
 <% end %>
 </table>
