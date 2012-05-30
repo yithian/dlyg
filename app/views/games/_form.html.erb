@@ -11,22 +11,36 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-
   <% if params[:action] == 'edit' -%>
-    <div class="field">
-      <%= f.label :despair %><br />
-      <%= f.number_field :despair, :autocomplete => :off %>
-    </div>
-    <div class="field">
-      <%= f.label :hope %><br />
-      <%= f.number_field :hope, :autocomplete => :off %>
-    </div>
+    <table>
+      <tbody>
+        <tr>
+          <td><b><%= f.label :name %></b></td>
+          <td><%= f.text_field :name %></td>
+        </tr>
+        <tr>
+          <td><b><%= f.label :despair %></b></td>
+          <td><%= f.number_field :despair, :autocomplete => :off %></td>
+        </tr>
+        <tr>
+          <td><b><%= f.label :hope %></b></td>
+          <td><%= f.number_field :hope, :autocomplete => :off %></td>
+        </tr>
+      </tbody>
+    </table>
   <% end -%>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+
+<% if params[:action] == "edit" -%>
+  <ul>
+    <% @game.players.each do |u| %>
+      <li><%= u.email %></li>
+    <% end -%>
+    <%= form_tag invite_game_path, :remote => true do %>
+      <li><%= text_field_tag :email %> <%= submit_tag "Invite" %></li>
+    <% end -%>
+  </ul>
+<% end -%>

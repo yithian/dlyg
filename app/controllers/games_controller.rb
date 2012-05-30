@@ -128,4 +128,13 @@ class GamesController < ApplicationController
       format.js
     end
   end
+  
+  # PUT /games/1/invite
+  def invite
+    @game = Game.find(params[:id])
+    @email = params[:email]
+    
+    @game.players << User.find_by_email(@email)
+    @game.save!
+  end
 end

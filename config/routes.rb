@@ -6,6 +6,7 @@ Dlyg::Application.routes.draw do
       post 'roll_dice'
       put 'cast_shadow'
       put 'shed_light'
+      post 'invite'
     end
   end
 
