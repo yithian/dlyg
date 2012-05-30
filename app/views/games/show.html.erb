@@ -32,7 +32,7 @@
         <td><%= submit_tag "Roll dice" %></td>
       </tr>
     </tfoot>
-  <% end -%>
+  <% end if can? :roll_dice, @game -%>
 </table>
 
 <p id="results"></p>

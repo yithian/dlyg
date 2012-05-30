@@ -9,6 +9,9 @@ class Ability
     can :shed_light, Game do |g|
       g.players.each.collect.include?(user)
     end
+    can :roll_dice, Game do |g|
+      g.players.each.collect.include?(user)
+    end
     can :create, Game if user.id
     can :read, :all
 
