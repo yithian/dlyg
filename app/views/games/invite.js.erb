@@ -1,1 +1,1 @@
-$("#email").before("<li><%= @email %></li>");
+$("#players").html('<%= escape_javascript(render :partial => "player", :collection => @game.players) %>')

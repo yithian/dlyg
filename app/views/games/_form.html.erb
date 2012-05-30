@@ -35,12 +35,10 @@
 <% end %>
 
 <% if params[:action] == "edit" -%>
-  <ul>
-    <% @game.players.each do |u| %>
-      <li><%= u.email %></li>
-    <% end -%>
-    <%= form_tag invite_game_path, :remote => true do %>
-      <li><%= text_field_tag :email %> <%= submit_tag "Invite" %></li>
-    <% end -%>
-  </ul>
+  <ul id="players">
+    <%= render :partial => "player", :collection => @game.players %>
+  </ul>  
+  <%= form_tag invite_game_path, :method => :put, :remote => true do %>
+    <%= text_field_tag :email %> <%= submit_tag "Invite player" %>
+  <% end -%>
 <% end -%>

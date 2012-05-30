@@ -1,0 +1,1 @@
+<li id="<%= player.id %>"><%= player.email %> <%= link_to image_tag('delete.png'), uninvite_game_path(:params => {:email => player.email}), :method => :put, :remote => true %></li>

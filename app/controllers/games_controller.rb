@@ -136,5 +136,23 @@ class GamesController < ApplicationController
     
     @game.players << User.find_by_email(@email)
     @game.save!
+    
+    respond_to do |format|
+      format.js
+    end
+  end
+  
+  # PUT /games/1/uninvite
+  def uninvite
+    @game = Game.find(params[:id])
+    @email = params[:email]
+    user = User.find_by_email(@email)
+    @id = user.id
+    
+    @game.players.delete(user)
+    
+    respond_to do |format|
+      format.js
+    end
   end
 end

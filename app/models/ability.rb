@@ -4,15 +4,24 @@ class Ability
   def initialize(user)
     user ||= User.new # guest user (not logged in)
     
+    # actions only GMs can do
+    can :invite, Game, :gm_id => user.id
+    can :uninvite, Game, :gm_id => user.id
     can :manage, Game, :gm_id => user.id
     can :cast_shadow, Game, :gm_id => user.id
+    
+    # actions players can do
     can :shed_light, Game do |g|
       g.players.each.collect.include?(user)
     end
     can :roll_dice, Game do |g|
       g.players.each.collect.include?(user)
     end
+    
+    # all logged-in users
     can :create, Game if user.id
+    
+    # anyone else
     can :read, :all
 
     # Define abilities for the passed in user here. For example:
