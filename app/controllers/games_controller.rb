@@ -43,7 +43,7 @@ class GamesController < ApplicationController
   # PUT /games/1
   # PUT /games/1.json
   def update
-    flash[:notice] = 'Game was successfully updated.' if @game.save
+    flash[:notice] = 'Game was successfully updated.' if @game.update_attributes(params[:game])
 
     respond_with @game
   end
