@@ -8,22 +8,22 @@
     <tbody>
       <tr>
         <td><b><%= label_tag :discipline %></b></td>
-        <td><%= number_field_tag :discipline, '', :autocomplete => :off %></td>
+        <td><%= number_field_tag :discipline, '0', :min => 0, :autocomplete => :off %></td>
         <td id="d_results" style="display: none"></td>
       </tr>
       <tr>
         <td><b><%= label_tag :exhaustion %></b></td>
-        <td><%= number_field_tag :exhaustion, '', :autocomplete => :off %></td>
+        <td><%= number_field_tag :exhaustion, '0', :min => 0, :autocomplete => :off %></td>
         <td id="e_results" style="display: none"></td>
       </tr>
       <tr>
         <td><b><%= label_tag :madness %></b></td>
-        <td><%= number_field_tag :madness, '', :autocomplete => :off %></td>
+        <td><%= number_field_tag :madness, '0', :min => 0, :autocomplete => :off %></td>
         <td id="m_results" style="display: none"></td>
       </tr>
       <tr>
         <td><b><%= label_tag :pain %></b></td>
-        <td><%= number_field_tag :pain, '', :autocomplete => :off %></td>
+        <td><%= number_field_tag :pain, '0', :min => 0, :autocomplete => :off %></td>
         <td id="p_results" style="display: none"></td>
       </tr>
     </tbody>
@@ -46,7 +46,7 @@
     <tr>
       <td colspan="2">
         <%= form_for @game, :method => :put, :url => cast_shadow_game_path, :remote => true do |f| -%>
-          Remove <%= number_field_tag :despair_coins, '1', :size => 3, :autocomplete => :off %> coin(s) to
+          Remove <%= number_field_tag :despair_coins, '1', :max => @game.despair, :min => 1, :autocomplete => :off %> coin(s) to
           <%= f.submit 'cast a shadow' %>
         <% end if can? :cast_shadow, @game -%>
       </td>
@@ -58,7 +58,7 @@
     <tr>
       <td colspan="2">
         <%= form_for @game, :method => :put, :url => shed_light_game_path, :remote => true do |f| -%>
-          Remove <%= number_field_tag :hope_coins, '1', :size => 3, :autocomplete => :off %> coin(s) to
+          Remove <%= number_field_tag :hope_coins, '1', :max => @game.hope, :min => 1, :autocomplete => :off %> coin(s) to
           <%= f.submit 'shed light' %>
         <% end if can? :shed_light, @game -%>
       </td>
