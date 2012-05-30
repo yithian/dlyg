@@ -61,7 +61,7 @@ class GamesController < ApplicationController
   
   # POST /games/1/roll_dice
   def roll_dice
-    @degree, @wins, @dominating, @discipline, @exhaustion, @madness, @pain = @game.roll(params[:discipline].to_i, params[:exhaustion].to_i, params[:madness].to_i, params[:pain].to_i,)
+    @degree, @wins, @dominating, @discipline, @exhaustion, @madness, @pain = @game.roll(params[:discipline].to_i, params[:exhaustion].to_i, params[:madness].to_i, params[:pain].to_i)
     @game.save
     
     @discipline = @discipline.join(', ')
