@@ -6,6 +6,6 @@ one:
   hope: 1
 
 two:
-  name: MyString
-  despair: 1
-  hope: 1
+  name: MyOtherString
+  despair: 2
+  hope: 2
