@@ -11,24 +11,24 @@
     </div>
   <% end %>
 
-  <% if params[:action] == 'edit' -%>
-    <table>
-      <tbody>
-        <tr>
-          <td><b><%= f.label :name %></b></td>
-          <td><%= f.text_field :name %></td>
-        </tr>
-        <tr>
-          <td><b><%= f.label :despair %></b></td>
-          <td><%= f.number_field :despair, :autocomplete => :off %></td>
-        </tr>
-        <tr>
-          <td><b><%= f.label :hope %></b></td>
-          <td><%= f.number_field :hope, :autocomplete => :off %></td>
-        </tr>
-      </tbody>
-    </table>
-  <% end -%>
+  <table>
+    <tbody>
+      <tr>
+        <td><b><%= f.label :name %></b></td>
+        <td><%= f.text_field :name %></td>
+      </tr>
+        <% if params[:action] == 'edit' -%>
+          <tr>
+            <td><b><%= f.label :despair %></b></td>
+            <td><%= f.number_field :despair, :autocomplete => :off %></td>
+          </tr>
+          <tr>
+            <td><b><%= f.label :hope %></b></td>
+            <td><%= f.number_field :hope, :autocomplete => :off %></td>
+          </tr>
+        <% end -%>
+    </tbody>
+  </table>
   <div class="actions">
     <%= f.submit %>
   </div>
