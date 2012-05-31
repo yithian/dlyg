@@ -6,6 +6,8 @@
 #
 one:
   email: one@one.com
+  games: two
 
 two:
   email: two@two.com
+  games: one

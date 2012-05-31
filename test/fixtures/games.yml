@@ -4,8 +4,12 @@ one:
   name: MyString
   despair: 1
   hope: 1
+  gm: one
+  players: two
 
 two:
   name: MyOtherString
   despair: 2
   hope: 2
+  gm: one
+  players: one
