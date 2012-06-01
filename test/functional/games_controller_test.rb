@@ -95,24 +95,65 @@ class GamesControllerTest < ActionController::TestCase
   test "should roll dice" do
     sign_in(users(:one))
 
-    assert_difference '@game.despair' do
+    # this should increment the despair pool
+    assert_difference 'Game.find_by_id(@game.id).despair' do
       xhr :post, :roll_dice, :id => @game.id, :discipline => 0, :exhaustion => 0, :madness => 0, :pain => 6
     end
   end
 
   test "shouldn't roll dice" do
+    assert_no_difference 'Game.find_by_id(@game.id).despair' do
+      xhr :post, :roll_dice, :id => @game.id, :discipline => 0, :exhaustion => 0, :madness => 0, :pain => 6
+    end
   end
 
   test "should cast shadow" do
+    sign_in(users(:one))
+    
+    assert_difference "Game.find_by_id(@game.id).despair", -1 do
+      assert_difference "Game.find_by_id(@game.id).hope", +1 do
+        xhr :put, :cast_shadow, :id => @game.id, :despair_coins => 1
+      end
+    end
   end
 
   test "shouldn't cast shadow" do
+    assert_no_difference "Game.find_by_id(@game.id).despair", -1 do
+      assert_no_difference "Game.find_by_id(@game.id).hope", +1 do
+        xhr :put, :cast_shadow, :id => @game.id, :despair_coins => 1
+      end
+    end
+    
+    sign_in(users(:two))
+    
+    assert_no_difference "Game.find_by_id(@game.id).despair", -1 do
+      assert_no_difference "Game.find_by_id(@game.id).hope", +1 do
+        xhr :put, :cast_shadow, :id => @game.id, :despair_coins => 1
+      end
+    end
   end
 
   test "should shed light" do
+    @game.hope = 2
+    @game.save
+    
+    sign_in(users(:one))
+    
+    assert_difference "Game.find_by_id(@game.id).hope", -1 do
+      xhr :put, :shed_light, :id => @game.id, :hope_coins => 1
+    end
+
+    sign_in(users(:two))
+
+    assert_difference "Game.find_by_id(@game.id).hope", -1 do
+      xhr :put, :shed_light, :id => @game.id, :hope_coins => 1
+    end
   end
 
   test "shouldn't shed light" do
+    assert_no_difference "Game.find_by_id(@game.id).hope", -1 do
+      xhr :put, :shed_light, :id => @game.id, :hope_coins => 1
+    end
   end
 
   test "should get edit" do
@@ -160,5 +201,18 @@ class GamesControllerTest < ActionController::TestCase
   end
 
   test "shouldn't destroy game" do
+    assert_no_difference('Game.count', -1) do
+      delete :destroy, id: @game
+    end
+
+    assert_redirected_to new_user_session_path
+
+    sign_in(users(:two))
+  
+    assert_no_difference('Game.count', -1) do
+      delete :destroy, id: @game
+    end
+
+    assert_redirected_to root_path
   end
 end
