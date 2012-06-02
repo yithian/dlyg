@@ -35,6 +35,12 @@
 <% end %>
 
 <% if params[:action] == "edit" -%>
+  <h2>GM</h2>
+  <%= form_for @game do |f| %>
+    <%= f.select :gm_id, options_from_collection_for_select(@game.players + [@game.gm], :id, :email) %>
+    <%= f.submit "Promote player to GM" %>
+  <% end -%>
+
   <h2>Players</h2>
   <ul id="players">
     <%= render :partial => "player", :collection => @game.players %>

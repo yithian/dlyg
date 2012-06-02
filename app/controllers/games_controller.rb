@@ -43,6 +43,9 @@ class GamesController < ApplicationController
   # PUT /games/1
   # PUT /games/1.json
   def update
+    # if the gm is changed, add the old one to the list of players
+    @game.players << @game.gm if params[:game][:gm_id] and params[:game][:gm_id] != @game.gm.id
+  
     flash[:notice] = 'Game was successfully updated.' if @game.update_attributes(params[:game])
 
     respond_with @game

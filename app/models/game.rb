@@ -2,7 +2,7 @@ class Game < ActiveRecord::Base
   belongs_to :gm, :class_name => "User"
   has_and_belongs_to_many :players, :class_name => "User"
   
-  attr_accessible :despair, :hope, :name
+  attr_accessible :despair, :hope, :name, :gm_id
   
   validates :despair, :numericality => {:only_integer => true, :greater_than_or_equal_to => 0}
   validates :hope, :numericality => {:only_integer => true, :greater_than_or_equal_to => 0}

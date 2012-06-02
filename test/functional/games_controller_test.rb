@@ -178,6 +178,19 @@ class GamesControllerTest < ActionController::TestCase
     assert_equal "new name", @game.name
     assert_equal 2, @game.despair
     assert_equal 2, @game.hope
+    # ensure the gm and players aren't changed
+    assert_equal users(:one).id, @game.gm_id, "the gm was changed"
+    assert_equal [users(:two)], @game.players, "the players were changed"
+  end
+  
+  test "should update game gm" do
+    sign_in(users(:one))
+
+    put :update, id: @game, game: { gm_id: users(:two).id }
+    @game = Game.find_by_id(games(:one).id)
+    
+    assert_equal users(:two), @game.gm, "didn't set gm properly"
+    assert @game.players.include?(users(:one)), "former gm not demoted to player"
   end
 
   test "shouldn't update game" do
