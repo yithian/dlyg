@@ -37,6 +37,10 @@ ul.menu {
 	margin: 0;
 }
 
+#results {
+	li:first-child { text-decoration: underline; }
+}
+
 #d_results {
     color: $discipline_color;
     background: $discipline_background;
