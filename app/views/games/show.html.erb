@@ -35,6 +35,7 @@
   <% end if can? :roll_dice, @game -%>
 </table>
 
+<b>Results:</b>
 <ul class="menu" id="results">
 	<%= render :partial => 'result', :collection => @game.results.reverse %>
 </ul>
