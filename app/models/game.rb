@@ -1,7 +1,7 @@
 class Game < ActiveRecord::Base
   belongs_to :gm, :class_name => "User"
   has_and_belongs_to_many :players, :class_name => "User"
-  has_many :results
+  has_many :results, :dependent => :destroy
   
   attr_accessible :despair, :hope, :name, :gm_id
   
