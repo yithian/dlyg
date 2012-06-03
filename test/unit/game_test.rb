@@ -60,4 +60,14 @@ class GameTest < ActiveSupport::TestCase
       @game.shed_light(1)
     end
   end
+  
+  # games should keep no more than 5 results
+  test "keeps five results" do
+    assert_equal(2, @game.results.length)
+    
+    # roll dice 4 times; this should still only have 5 results becauseit removes the oldest
+    4.times { @game.roll(1, 1, 1, 1) }
+    
+    assert_equal(5, @game.results.length)
+  end
 end

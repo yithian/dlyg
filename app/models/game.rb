@@ -1,7 +1,7 @@
 class Game < ActiveRecord::Base
   belongs_to :gm, :class_name => "User"
   has_and_belongs_to_many :players, :class_name => "User"
-  has_many :results, :dependent => :destroy
+  has_many :results, :dependent => :destroy, :order => "created_at ASC"
   
   attr_accessible :despair, :hope, :name, :gm_id
   
@@ -81,7 +81,21 @@ class Game < ActiveRecord::Base
       self.despair += 1
     end
     
-    return degree, wins, dominating, discipline, exhaustion, madness, pain
+    # create a new result and save it
+    dicsipline = discipline.join(', ')
+    exhaustion = exhaustion.join(', ')
+    madness = madness.join(', ')
+    pain = pain.join(', ')
+    
+    result = Result.create(:game_id => self.id, :degree => degree, :discipline => discipline.to_s, :exhaustion => exhaustion.to_s, :madness => madness.to_s, :pain => pain.to_s, :winner => wins, :dominating => dominating)
+    
+    self.save!
+    self.results << result
+    while self.results.length > 5
+      self.results.delete(self.results.first)
+    end
+    
+    return result
   end
   
   # handle the caluclations for casting a shadow
