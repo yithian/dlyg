@@ -162,6 +162,58 @@ class GamesControllerTest < ActionController::TestCase
     get :edit, id: @game
     assert_response :success
   end
+  
+  test "should invite players" do
+    sign_in(users(:one))
+    
+    xhr :put, :invite, :id => @game.id, :email => users(:one).email
+    @game = Game.find_by_id(games(:one).id)
+    
+    assert @game.players.include?(users(:one)), "player wasn't invited correctly"
+    
+    @game.players.each do |player|
+      assert /#{player.email}/.match(response.body), "#{player.email} was not in the js"
+    end
+  end
+  
+  test "shouldn't invite players" do
+    xhr :put, :invite, :id => @game.id, :email => users(:one).email
+    @game = Game.find_by_id(games(:one).id)
+    
+    assert ! @game.players.include?(users(:one)), "player was invited"
+    
+    sign_in(users(:two))
+    xhr :put, :invite, :id => @game.id, :email => users(:one).email
+    @game = Game.find_by_id(games(:one).id)
+    
+    assert ! @game.players.include?(users(:one)), "player was invited"
+  end
+  
+  test "should uninvite players" do
+    sign_in(users(:one))
+    
+    xhr :put, :uninvite, :id => @game.id, :email => users(:two).email
+    @game = Game.find_by_id(games(:one).id)
+    
+    assert @game.players.empty?, "didn't uninvite player"
+    
+    @game.players.each do |player|
+      assert /#{player.email}/.match(response.body), "#{player.email} was not in the js"
+    end
+  end
+  
+  test "shouldn't uninvite players" do
+    xhr :put, :uninvite, :id => @game.id, :email => users(:two).email
+    @game = Game.find_by_id(games(:one).id)
+    
+    assert ! @game.players.empty?, "uninvited player"
+    
+    sign_in(users(:two))
+    xhr :put, :uninvite, :id => @game.id, :email => users(:two).email
+    @game = Game.find_by_id(games(:one).id)
+    
+    assert ! @game.players.empty?, "uninvited player"
+  end
 
   test "shouldn't get edit" do
     get :edit
