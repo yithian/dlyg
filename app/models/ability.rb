@@ -9,6 +9,9 @@ class Ability
     can :uninvite, Game, :gm_id => user.id
     can :manage, Game, :gm_id => user.id
     can :cast_shadow, Game, :gm_id => user.id
+    can :destroy, Result do |r|
+      r.game.gm_id == user.id
+    end
     
     # actions players can do
     can :shed_light, Game do |g|

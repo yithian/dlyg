@@ -1,4 +1,6 @@
 Dlyg::Application.routes.draw do
+  resources :results
+
   devise_for :users
 
   resources :games do
@@ -9,6 +11,8 @@ Dlyg::Application.routes.draw do
       put 'invite'
       put 'uninvite'
     end
+    
+    resources :results
   end
 
   root :to => 'games#index'
