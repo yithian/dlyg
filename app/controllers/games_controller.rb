@@ -102,7 +102,6 @@ class GamesController < ApplicationController
     @email = params[:email]
     
     @game.players << User.find_by_email(@email)
-    @game.save!
     
     respond_to do |format|
       format.js
