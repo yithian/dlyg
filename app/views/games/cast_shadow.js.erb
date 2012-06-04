@@ -1,4 +1,10 @@
 $('#despair').html('<%= @game.despair %>');
 $('#despair_coins').attr('max', '<%= @game.despair %>');
+if (parseInt($('#despair_coins').val()) > parseInt($('#despair_coins').attr('max'))) {
+	$('#despair_coins').val($('#despair_coins').attr('max'));
+}
 $('#hope').html('<%= @game.hope %>');
 $('#hope_coins').attr('max', '<%= @game.hope %>');
+if (parseInt($('#hope_coins').val()) == 0 ) {
+	$('#hope_coins').val('1');
+}

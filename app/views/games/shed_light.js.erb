@@ -1,2 +1,5 @@
 $('#hope').html('<%= @game.hope %>');
 $('#hope_coins').attr('max', '<%= @game.hope %>');
+if (parseInt($('#hope_coins').val()) > parseInt($('#hope_coins').attr('max'))) {
+	$('#hope_coins').val($('#hope_coins').attr('max'));
+}
