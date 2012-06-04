@@ -7,12 +7,13 @@ class ResultsControllerTest < ActionController::TestCase
 
   test "should destroy result" do
     sign_in(users(:one))
+    game = @result.game
     
     assert_difference('Result.count', -1) do
       delete :destroy, id: @result
     end
 
-    assert_redirected_to results_path
+    assert_redirected_to game_path(game)
   end
   
   test "shouldn't destroy result" do

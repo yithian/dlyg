@@ -1,1 +1,1 @@
-<li><%= "#{result.winner} won with a degree of #{result.degree}, with #{result.dominating} dominant" %></li>
+<li><%= "#{result.winner} won with a degree of #{result.degree}, with #{result.dominating} dominant" %> <%= link_to image_tag('delete.png'), result, :method => :delete if can? :destroy, result %></li>

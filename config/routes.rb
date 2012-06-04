@@ -12,7 +12,7 @@ Dlyg::Application.routes.draw do
       put 'uninvite'
     end
     
-    resources :results
+    resource :result
   end
 
   root :to => 'games#index'
