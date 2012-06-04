@@ -82,7 +82,7 @@ class Game < ActiveRecord::Base
     end
     
     # create a new result and save it
-    dicsipline = discipline.join(', ')
+    discipline = discipline.join(', ')
     exhaustion = exhaustion.join(', ')
     madness = madness.join(', ')
     pain = pain.join(', ')
