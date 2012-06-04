@@ -24,9 +24,24 @@ $madness_background: red;
 $pain_color: $madness_background;
 $pain_background: $discipline_color;
 
+$main_color: #333;
+$highlight: #820;
+$background: #fff;
+
 @mixin readable {
     padding-left: .5em;
     padding-right: .5em;
+}
+
+body {
+    font-family: verdana, arial, helvetica, sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+    color: $main_color;
+    background-color: $background;
+    
+    h1 { color: $highlight; }
+    h3 { color: $highlight; }
 }
 
 input[type="number"] { width: 3em; }
@@ -68,13 +83,6 @@ ul.menu {
 }
 
 /* included in rails by default */
-body {
-  background-color: #fff;
-  color: #333;
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px; }
-
 p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;

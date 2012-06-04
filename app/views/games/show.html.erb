@@ -1,7 +1,4 @@
-<p>
-  <b>Name:</b>
-  <%= @game.name %>
-</p>
+<h3><%= @game.name %></h3>
 
 <table>
   <%= form_tag(roll_dice_game_path, :remote => true) do -%>
@@ -35,11 +32,12 @@
   <% end if can? :roll_dice, @game -%>
 </table>
 
-<b>Results:</b>
+<h3>Results</h3>
 <ul class="menu" id="results">
 	<%= render :partial => 'result', :collection => @game.results.reverse %>
 </ul>
 
+<h3>Coins</h3>
 <table>
   <tbody>
     <tr>
