@@ -6,6 +6,6 @@ $('#m_results').html('<%= @result.madness %>');
 $('#m_results').show();
 $('#p_results').html('<%= @result.pain %>');
 $('#p_results').show();
-$('#results').html('<%= render :partial => "result", :collection => @game.results.reverse %>');
+$('#results').html('<%= escape_javascript(render :partial => "result", :collection => @game.results.reverse) %>');
 $('#despair').html('<%= @game.despair %>');
 $('#despair_coins').attr('max', '<%= @game.despair %>');
