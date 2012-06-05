@@ -17,7 +17,7 @@
         <td><b><%= f.label :name %></b></td>
         <td><%= f.text_field :name %></td>
       </tr>
-        <% if params[:action] == 'edit' -%>
+        <% if params[:action] == 'edit' or params[:action] == "update" -%>
           <tr>
             <td><b><%= f.label :despair %></b></td>
             <td><%= f.number_field :despair, :autocomplete => :off %></td>
@@ -34,7 +34,8 @@
   </div>
 <% end %>
 
-<% if params[:action] == "edit" -%>
+<% logger.info "action is #{params[:action]}" -%>
+<% if params[:action] == "edit" or params[:action] == "update" -%>
   <h3>GM</h3>
   <%= form_for @game do |f| %>
     <%= f.select :gm_id, options_from_collection_for_select(@game.players + [@game.gm], :id, :email) %>
