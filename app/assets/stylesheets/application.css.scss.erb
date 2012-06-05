@@ -27,6 +27,7 @@ $pain_background: $discipline_color;
 $main_color: #333;
 $highlight: #820;
 $background: #fff;
+$black: #111;
 
 @mixin readable {
     padding-left: .5em;
@@ -35,7 +36,12 @@ $background: #fff;
 
 @font-face {
     font-family: typewriter;
-    src: url("<%= asset_path('Mom®t___.ttf') %>");
+    src: url(<%= asset_path('Mom®t___.ttf') %>);
+}
+
+html {
+    height: 100%;
+    background-color: $black;
 }
 
 body {
@@ -44,9 +50,11 @@ body {
     line-height: 18px;
     color: $main_color;
     background-color: $background;
-    
-    h1, h3 { color: $highlight; font-family: typewriter; }
+    margin: 10px;
+    padding: 10px;
 }
+
+h1, h3 { color: $highlight; font-family: typewriter; text-transform: uppercase; }
 
 input[type="number"] { width: 3em; }
 
