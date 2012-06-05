@@ -33,6 +33,11 @@ $background: #fff;
     padding-right: .5em;
 }
 
+@font-face {
+    font-family: typewriter;
+    src: url("<%= asset_path('Mom®t___.ttf') %>");
+}
+
 body {
     font-family: verdana, arial, helvetica, sans-serif;
     font-size: 13px;
@@ -40,8 +45,7 @@ body {
     color: $main_color;
     background-color: $background;
     
-    h1 { color: $highlight; }
-    h3 { color: $highlight; }
+    h1, h3 { color: $highlight; font-family: typewriter; }
 }
 
 input[type="number"] { width: 3em; }
