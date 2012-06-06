@@ -1,10 +1,6 @@
-<table>
-  <tr>
-    <th></th>
-    <th>Name</th>
-    <th></th>
-  </tr>
+<h2>Games</h2>
 
+<table>
 <% @games.each do |game| %>
   <tr>
     <td><%= link_to image_tag('edit.png'), edit_game_path(game) if can? :edit, game %></td>
