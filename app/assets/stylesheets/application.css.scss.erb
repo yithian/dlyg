@@ -63,6 +63,16 @@ h1, h2, h3 { color: $highlight; font-family: typewriter; text-transform: upperca
 
 h1 { margin-bottom: 2em; color: $background; }
 
+a {
+	text-decoration: none;
+	border-style: none;
+	color: $highlight;
+	
+	&:hover {
+		color: darken($highlight, 30%);
+	}
+}
+
 input[type="number"] { width: 3em; }
 
 ul.menu {
