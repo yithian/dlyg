@@ -1,6 +1,4 @@
 Dlyg::Application.routes.draw do
-  resources :results
-
   devise_for :users
 
   resources :games do
