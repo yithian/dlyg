@@ -12,6 +12,9 @@ class Ability
     can :destroy, Result do |r|
       r.game.gm_id == user.id
     end
+    can :manage, Play do |p|
+      p.game.gm_id == user.id
+    end
     
     # actions players can do
     can :shed_light, Game do |g|
@@ -20,6 +23,8 @@ class Ability
     can :roll_dice, Game do |g|
       g.players.each.collect.include?(user)
     end
+    can :edit, Play, :user_id => user.id
+    can :update, Play, :user_id => user.id
     
     # all logged-in users
     can :create, Game if user.id
