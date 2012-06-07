@@ -68,6 +68,7 @@ class GamesControllerTest < ActionController::TestCase
     assert_select "input[value='Roll dice']", false
     assert_select "input[value='cast a shadow']", false
     assert_select "input[value='shed light']", false
+    assert_select "#players"
   end
 
   test "should show game as player" do
@@ -79,6 +80,7 @@ class GamesControllerTest < ActionController::TestCase
     assert_select "input[value='Roll dice']"
     assert_select "input[value='cast a shadow']", false
     assert_select "input[value='shed light']"
+    assert_select "#players"
   end
 
   test "should show game as gm" do
@@ -90,6 +92,7 @@ class GamesControllerTest < ActionController::TestCase
     assert_select "input[value='Roll dice']"
     assert_select "input[value='cast a shadow']"
     assert_select "input[value='shed light']"
+    assert_select "#players"
   end
 
   test "should roll dice" do
