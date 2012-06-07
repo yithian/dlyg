@@ -32,6 +32,7 @@
   <% end if can? :roll_dice, @game -%>
 </table>
 
+<h3>Characters</h3>
 <table id="players">
   <tbody>
     <%= render :partial => 'play', :collection => @game.plays %>

@@ -1,3 +1,9 @@
 <tr>
-  <td><%= play.character_name %>, played by <%= play.user.email %></td>
+  <td><%= if can? :edit, play
+            form_for [@game, play] do |p|
+              p.text_field :character_name, :class => "short"
+            end 
+          else 
+            play.character_name
+          end -%>, played by <%= play.user.email %></td>
 </tr>
