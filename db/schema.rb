@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(:version => 20120607163725) do
     t.integer  "gm_id"
   end
 
-  create_table "plays", :id => false, :force => true do |t|
+  create_table "plays", :force => true do |t|
     t.integer "user_id"
     t.integer "game_id"
     t.string  "character_name"
