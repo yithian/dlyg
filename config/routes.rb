@@ -9,6 +9,8 @@ Dlyg::Application.routes.draw do
       put 'invite'
       put 'uninvite'
     end
+
+    resources :play, :only => [:create, :update, :destroy]
     
     resource :result
   end
