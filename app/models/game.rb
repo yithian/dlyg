@@ -14,7 +14,7 @@ class Game < ActiveRecord::Base
   # exhaustion, madness and pain pools
   def roll(discipline_dice = 0, exhaustion_dice = 0, madness_dice = 0, pain_dice = 0, char_name = 'player')
     # in case an empty name is passed
-    char_name = 'player' if char_name.empty?
+    char_name = 'player' if char_name.nil? or char_name.empty?
     degree = 0
     discipline_degree = 0
     exhaustion_degree = 0
