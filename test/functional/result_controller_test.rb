@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ResultsControllerTest < ActionController::TestCase
+class ResultControllerTest < ActionController::TestCase
   setup do
     @result = results(:one)
   end
