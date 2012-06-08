@@ -111,4 +111,9 @@ class Game < ActiveRecord::Base
   def shed_light(coins = 1)
     self.hope -= coins
   end
+  
+  # show game name in url
+  def to_param
+    "#{self.id}_#{self.name.gsub(/[ '"#%\{\}|\\^~\[\]`]/, '-').gsub(/[.&?\/:;=@]/, '')}"    
+  end
 end
