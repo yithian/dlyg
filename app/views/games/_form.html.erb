@@ -34,7 +34,6 @@
   </div>
 <% end %>
 
-<% logger.info "action is #{params[:action]}" -%>
 <% if params[:action] == "edit" or params[:action] == "update" -%>
   <h3>GM</h3>
   <%= form_for @game do |f| %>
