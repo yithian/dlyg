@@ -1,2 +1,2 @@
 $("#<%= @id %>").remove();
-$("#game_gm_id").html('<%= options_from_collection_for_select(@game.players + [@game.gm], :id, :email)')
+$("#game_gm_id").html('<%= escape_javascript(options_from_collection_for_select(@game.players + [@game.gm], :id, :email))')
