@@ -12,7 +12,7 @@ class Game < ActiveRecord::Base
   # roll dem bones
   # returns degree, the winner, the dominating pool and results for discipline,
   # exhaustion, madness and pain pools
-  def roll(discipline_dice = 0, exhaustion_dice = 0, madness_dice = 0, pain_dice = 0)
+  def roll(discipline_dice = 0, exhaustion_dice = 0, madness_dice = 0, pain_dice = 0, char_name = 'player')
     degree = 0
     discipline_degree = 0
     exhaustion_degree = 0
@@ -62,7 +62,7 @@ class Game < ActiveRecord::Base
     
     # determine who wins
     if degree >= pain_degree
-      wins = :player
+      wins = char_name
     else
       wins = :pain
       degree = pain_degree

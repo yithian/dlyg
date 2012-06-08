@@ -64,7 +64,8 @@ class GamesController < ApplicationController
   
   # POST /games/1/roll_dice
   def roll_dice
-    @result = @game.roll(params[:discipline].to_i, params[:exhaustion].to_i, params[:madness].to_i, params[:pain].to_i)
+    name = @game.plays.collect { |p| p.character_name if p.user == current_user }
+    @result = @game.roll(params[:discipline].to_i, params[:exhaustion].to_i, params[:madness].to_i, params[:pain].to_i, name.first)
 
     respond_to do |format|
       format.js
