@@ -23,8 +23,8 @@ class Ability
     can :roll_dice, Game do |g|
       g.players.each.collect.include?(user)
     end
-    can :edit, Play, :user_id => user.id
     can :update, Play, :user_id => user.id
+    can :destroy, Play, :user_id => user.id
     
     # all logged-in users
     can :create, Game if user.id
