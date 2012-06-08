@@ -1,4 +1,4 @@
-class ResultsController < ApplicationController
+class ResultController < ApplicationController
   respond_to :html, :xml
   load_and_authorize_resource
 

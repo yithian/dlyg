@@ -12,7 +12,7 @@ Dlyg::Application.routes.draw do
 
     resources :play, :only => [:create, :update, :destroy]
     
-    resource :result
+    resources :result
   end
 
   root :to => 'games#index'
