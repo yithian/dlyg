@@ -1,6 +1,6 @@
-== Don't Lose Your Game
+== Don't Lose Your \Game
 
-Don't Lose Your Game (or, dlyg for the lazy like myself) is an application
+Don't Lose Your \Game (or, dlyg for the lazy like myself) is an application
 designed to help you run your game of Don't Rest Your Head.
 
 It will roll the dice, separated into discipline, exhaustion, madness and

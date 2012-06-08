@@ -1,3 +1,7 @@
+# Game is the major building block of Dlyg. It has attributes
+# for players (and the connections between players and the game)
+# and for dice results. This is also where rolling dice occurs.
+
 class Game < ActiveRecord::Base
   belongs_to :gm, :class_name => "User"
   has_many :plays

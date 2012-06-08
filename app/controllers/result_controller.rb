@@ -1,3 +1,6 @@
+# ResultController literally exists just so GMs can
+# easily remove rolls from their games' history.
+
 class ResultController < ApplicationController
   respond_to :html, :xml
   load_and_authorize_resource

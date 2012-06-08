@@ -1,3 +1,7 @@
+# the GamesController is where the meat of Dlyg lives. It
+# handles basically everything to do with a game: rolling
+# dice, inviting/uninviting players, etc
+
 class GamesController < ApplicationController
   respond_to :html, :xml
   load_and_authorize_resource

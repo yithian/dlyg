@@ -1,3 +1,8 @@
+# PlayController exists pretty much just to have route
+# shortcuts to destroy a Play. There are a couple other
+# actions here just in case they may see future use as
+# well.
+
 class PlayController < ApplicationController
   respond_to :html, :xml
   load_and_authorize_resource

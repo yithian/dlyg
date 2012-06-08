@@ -1,6 +1,9 @@
+# defines permissions on a per-user basis
+
 class Ability
   include CanCan::Ability
 
+  # this is the test for user permissions
   def initialize(user)
     user ||= User.new # guest user (not logged in)
     

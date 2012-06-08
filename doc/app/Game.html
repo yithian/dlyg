@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+<title>class Game - Rails Application Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>app/models/game.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">ActiveRecord::Base
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-i-cast_shadow">#cast_shadow</a>
+    
+    <li><a href="#method-i-roll">#roll</a>
+    
+    <li><a href="#method-i-shed_light">#shed_light</a>
+    
+    <li><a href="#method-i-to_param">#to_param</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./doc/README_FOR_APP.html">README_FOR_APP</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./Ability.html">Ability</a>
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./Game.html">Game</a>
+  
+    <li><a href="./GameHelper.html">GameHelper</a>
+  
+    <li><a href="./GamesController.html">GamesController</a>
+  
+    <li><a href="./Play.html">Play</a>
+  
+    <li><a href="./PlayController.html">PlayController</a>
+  
+    <li><a href="./PlayHelper.html">PlayHelper</a>
+  
+    <li><a href="./Result.html">Result</a>
+  
+    <li><a href="./ResultController.html">ResultController</a>
+  
+    <li><a href="./ResultHelper.html">ResultHelper</a>
+  
+    <li><a href="./User.html">User</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class Game</h1>
+
+  <div id="description" class="description">
+    
+<p><a href="Game.html">Game</a> is the major building block of Dlyg. It has
+attributes for players (and the connections between players and the game)
+and for dice results. This is also where rolling dice occurs.</p>
+
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-cast_shadow" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">cast_shadow</span><span
+            class="method-args">(coins = 1)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>handle the caluclations for casting a shadow</p>
+          
+
+          
+          <div class="method-source-code" id="cast_shadow-source">
+            <pre><span class="ruby-comment"># File app/models/game.rb, line 109</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">cast_shadow</span>(<span class="ruby-identifier">coins</span> = <span class="ruby-value">1</span>)
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">despair</span> <span class="ruby-operator">-=</span> <span class="ruby-identifier">coins</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">hope</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">coins</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- cast_shadow-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- cast_shadow-method -->
+
+    
+      <div id="method-i-roll" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">roll</span><span
+            class="method-args">(discipline_dice = 0, exhaustion_dice = 0, madness_dice = 0, pain_dice = 0, char_name = 'player')</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>roll dem bones returns degree, the winner, the dominating pool and results
+for discipline, exhaustion, madness and pain pools</p>
+          
+
+          
+          <div class="method-source-code" id="roll-source">
+            <pre><span class="ruby-comment"># File app/models/game.rb, line 19</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">roll</span>(<span class="ruby-identifier">discipline_dice</span> = <span class="ruby-value">0</span>, <span class="ruby-identifier">exhaustion_dice</span> = <span class="ruby-value">0</span>, <span class="ruby-identifier">madness_dice</span> = <span class="ruby-value">0</span>, <span class="ruby-identifier">pain_dice</span> = <span class="ruby-value">0</span>, <span class="ruby-identifier">char_name</span> = <span class="ruby-string">'player'</span>)
+  <span class="ruby-comment"># in case an empty name is passed</span>
+  <span class="ruby-identifier">char_name</span> = <span class="ruby-string">'player'</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">char_name</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">char_name</span>.<span class="ruby-identifier">empty?</span>
+  <span class="ruby-identifier">degree</span> = <span class="ruby-value">0</span>
+  <span class="ruby-identifier">discipline_degree</span> = <span class="ruby-value">0</span>
+  <span class="ruby-identifier">exhaustion_degree</span> = <span class="ruby-value">0</span>
+  <span class="ruby-identifier">madness_degree</span> = <span class="ruby-value">0</span>
+  <span class="ruby-identifier">pain_degree</span> = <span class="ruby-value">0</span>
+  
+  <span class="ruby-comment"># count degree of player pools</span>
+  <span class="ruby-identifier">pool</span> = <span class="ruby-constant">DiceRoller</span><span class="ruby-operator">::</span><span class="ruby-constant">DicePool</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">0</span>, <span class="ruby-identifier">discipline_dice</span>)
+  <span class="ruby-identifier">discipline</span> = <span class="ruby-identifier">pool</span>.<span class="ruby-identifier">roll_pool</span>.<span class="ruby-identifier">six_result</span>.<span class="ruby-identifier">sort</span>.<span class="ruby-identifier">reverse</span>
+
+  <span class="ruby-identifier">discipline</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">d</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">d</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-value">3</span>
+      <span class="ruby-identifier">degree</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+      <span class="ruby-identifier">discipline_degree</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-identifier">pool</span>.<span class="ruby-identifier">num_six</span> = <span class="ruby-identifier">exhaustion_dice</span>
+  <span class="ruby-identifier">exhaustion</span> = <span class="ruby-identifier">pool</span>.<span class="ruby-identifier">roll_pool</span>.<span class="ruby-identifier">six_result</span>.<span class="ruby-identifier">sort</span>.<span class="ruby-identifier">reverse</span>
+  
+  <span class="ruby-identifier">exhaustion</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">e</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">e</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-value">3</span>
+      <span class="ruby-identifier">degree</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+      <span class="ruby-identifier">exhaustion_degree</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-identifier">pool</span>.<span class="ruby-identifier">num_six</span> = <span class="ruby-identifier">madness_dice</span>
+  <span class="ruby-identifier">madness</span> = <span class="ruby-identifier">pool</span>.<span class="ruby-identifier">roll_pool</span>.<span class="ruby-identifier">six_result</span>.<span class="ruby-identifier">sort</span>.<span class="ruby-identifier">reverse</span>
+  
+  <span class="ruby-identifier">madness</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">m</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">m</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-value">3</span>
+      <span class="ruby-identifier">degree</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+      <span class="ruby-identifier">madness_degree</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-comment"># count degree of pain</span>
+  <span class="ruby-identifier">pool</span>.<span class="ruby-identifier">num_six</span> = <span class="ruby-identifier">pain_dice</span>
+  <span class="ruby-identifier">pain</span> = <span class="ruby-identifier">pool</span>.<span class="ruby-identifier">roll_pool</span>.<span class="ruby-identifier">six_result</span>.<span class="ruby-identifier">sort</span>.<span class="ruby-identifier">reverse</span>
+  
+  <span class="ruby-identifier">pain</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">p</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">p</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-value">3</span>
+      <span class="ruby-identifier">pain_degree</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-comment"># determine who wins</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">degree</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-identifier">pain_degree</span>
+    <span class="ruby-identifier">wins</span> = <span class="ruby-identifier">char_name</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">wins</span> = <span class="ruby-value">:pain</span>
+    <span class="ruby-identifier">degree</span> = <span class="ruby-identifier">pain_degree</span>
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-comment"># determine which pool is dominant</span>
+  <span class="ruby-comment"># there is some trickery here: the order of assignment is important.</span>
+  <span class="ruby-comment"># due to the hierarchy of tie-breakers, &quot;tied&quot; elements assigned later</span>
+  <span class="ruby-comment"># in the hash will overwrite earlier elements. so later elements</span>
+  <span class="ruby-comment"># &quot;beat&quot; earlier ones</span>
+  <span class="ruby-identifier">dominant</span> = {<span class="ruby-identifier">pain</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:pain</span>, <span class="ruby-identifier">exhaustion</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:exhaustion</span>, <span class="ruby-identifier">madness</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:madness</span>, <span class="ruby-identifier">discipline</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:discipline</span> }
+  
+  <span class="ruby-identifier">dominating</span> = <span class="ruby-identifier">dominant</span>[<span class="ruby-identifier">dominant</span>.<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">max</span>]
+  
+  <span class="ruby-comment"># bump despair count if pain is dominant</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">dominating</span> <span class="ruby-operator">==</span> <span class="ruby-value">:pain</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">despair</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-comment"># create a new result and save it</span>
+  <span class="ruby-identifier">discipline</span> = <span class="ruby-identifier">discipline</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">', '</span>)
+  <span class="ruby-identifier">exhaustion</span> = <span class="ruby-identifier">exhaustion</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">', '</span>)
+  <span class="ruby-identifier">madness</span> = <span class="ruby-identifier">madness</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">', '</span>)
+  <span class="ruby-identifier">pain</span> = <span class="ruby-identifier">pain</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">', '</span>)
+  
+  <span class="ruby-identifier">result</span> = <span class="ruby-constant">Result</span>.<span class="ruby-identifier">create</span>(<span class="ruby-value">:game_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">id</span>, <span class="ruby-value">:degree</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">degree</span>, <span class="ruby-value">:discipline</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">discipline</span>.<span class="ruby-identifier">to_s</span>, <span class="ruby-value">:exhaustion</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">exhaustion</span>.<span class="ruby-identifier">to_s</span>, <span class="ruby-value">:madness</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">madness</span>.<span class="ruby-identifier">to_s</span>, <span class="ruby-value">:pain</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">pain</span>.<span class="ruby-identifier">to_s</span>, <span class="ruby-value">:winner</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">wins</span>, <span class="ruby-value">:dominating</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">dominating</span>)
+  
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">save!</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">results</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">result</span>
+  <span class="ruby-keyword">while</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">results</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">5</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">results</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">results</span>.<span class="ruby-identifier">first</span>)
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">result</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- roll-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- roll-method -->
+
+    
+      <div id="method-i-shed_light" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">shed_light</span><span
+            class="method-args">(coins = 1)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>handle the caluclations for shedding light</p>
+          
+
+          
+          <div class="method-source-code" id="shed_light-source">
+            <pre><span class="ruby-comment"># File app/models/game.rb, line 115</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">shed_light</span>(<span class="ruby-identifier">coins</span> = <span class="ruby-value">1</span>)
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">hope</span> <span class="ruby-operator">-=</span> <span class="ruby-identifier">coins</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- shed_light-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- shed_light-method -->
+
+    
+      <div id="method-i-to_param" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">to_param</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>show game name in url</p>
+          
+
+          
+          <div class="method-source-code" id="to_param-source">
+            <pre><span class="ruby-comment"># File app/models/game.rb, line 120</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">to_param</span>
+  <span class="ruby-node">&quot;#{self.id}_#{self.name.gsub(/[ '&quot;#%\{\}|\\^~\[\]`]/, '-').gsub(/[.&amp;?\/:;=@]/, '')}&quot;</span>    
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- to_param-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- to_param-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

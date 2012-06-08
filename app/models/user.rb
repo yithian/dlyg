@@ -1,3 +1,5 @@
+# a user as created by devise
+
 class User < ActiveRecord::Base
   has_many :running_games, :foreign_key => :gm_id
   has_many :plays
