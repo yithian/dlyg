@@ -10,12 +10,12 @@
       </tr>
       <tr>
         <td><b><%= label_tag :exhaustion %></b></td>
-        <td><%= number_field_tag :exhaustion, '0', :min => 0, :autocomplete => :off %></td>
+        <td><%= number_field_tag :exhaustion, '0', :min => 0, :max => 6, :autocomplete => :off %></td>
         <td id="e_results" style="display: none"></td>
       </tr>
       <tr>
         <td><b><%= label_tag :madness %></b></td>
-        <td><%= number_field_tag :madness, '0', :min => 0, :autocomplete => :off %></td>
+        <td><%= number_field_tag :madness, '0', :min => 0, :max => 6, :autocomplete => :off %></td>
         <td id="m_results" style="display: none"></td>
       </tr>
       <tr>
