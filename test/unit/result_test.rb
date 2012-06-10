@@ -14,4 +14,17 @@ class ResultTest < ActiveSupport::TestCase
     assert @result.madness, "couldn't access madness"
     assert @result.madness, "couldn't access madness"
   end
+  
+  test 'recall a scar' do
+    @result.pain = '4'
+    orig_ts = @result.updated_at
+    orig_win = @result.winner
+    orig_dom = @result.dominating
+    
+    @result.recall(:discipline)
+    @result = Result.find(results(:one).id)
+    
+    assert_not_equal orig_win, @result.winner
+    assert_not_equal orig_dom, @result.dominating
+  end
 end

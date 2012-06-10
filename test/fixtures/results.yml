@@ -2,12 +2,13 @@
 
 one:
   game: one
-  winner: MyWinner
+  winner: pain
   degree: 1
-  discipline: MyDiscipline
-  exhaustion: MyExhaustion
-  madness: MyMadness
-  pain: MyPain
+  discipline: '3, 2, 5'
+  exhaustion: '1, 4'
+  madness: '6'
+  pain: '6, 6, 6, 1, 1, 1, 1'
+  dominating: pain
 
 two:
   game: one
