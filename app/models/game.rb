@@ -19,74 +19,19 @@ class Game < ActiveRecord::Base
   def roll(discipline_dice = 0, exhaustion_dice = 0, madness_dice = 0, pain_dice = 0, char_name = 'player')
     # in case an empty name is passed
     char_name = 'player' if char_name.nil? or char_name.empty?
-    degree = 0
-    discipline_degree = 0
-    exhaustion_degree = 0
-    madness_degree = 0
-    pain_degree = 0
     
-    # count degree of player pools
+    # roll dice
     pool = DiceRoller::DicePool.new(0, discipline_dice)
     discipline = pool.roll_pool.six_result.sort.reverse
-
-    discipline.each do |d|
-      if d <= 3
-        degree += 1
-        discipline_degree += 1
-      end
-    end
     
     pool.num_six = exhaustion_dice
     exhaustion = pool.roll_pool.six_result.sort.reverse
     
-    exhaustion.each do |e|
-      if e <= 3
-        degree += 1
-        exhaustion_degree += 1
-      end
-    end
-    
     pool.num_six = madness_dice
     madness = pool.roll_pool.six_result.sort.reverse
     
-    madness.each do |m|
-      if m <= 3
-        degree += 1
-        madness_degree += 1
-      end
-    end
-    
-    # count degree of pain
     pool.num_six = pain_dice
     pain = pool.roll_pool.six_result.sort.reverse
-    
-    pain.each do |p|
-      if p <= 3
-        pain_degree += 1
-      end
-    end
-    
-    # determine who wins
-    if degree >= pain_degree
-      wins = char_name
-    else
-      wins = :pain
-      degree = pain_degree
-    end
-    
-    # determine which pool is dominant
-    # there is some trickery here: the order of assignment is important.
-    # due to the hierarchy of tie-breakers, "tied" elements assigned later
-    # in the hash will overwrite earlier elements. so later elements
-    # "beat" earlier ones
-    dominant = {pain => :pain, exhaustion => :exhaustion, madness => :madness, discipline => :discipline }
-    
-    dominating = dominant[dominant.keys.max]
-    
-    # bump despair count if pain is dominant
-    if dominating == :pain
-      self.despair += 1
-    end
     
     # create a new result and save it
     discipline = discipline.join(', ')
@@ -94,7 +39,13 @@ class Game < ActiveRecord::Base
     madness = madness.join(', ')
     pain = pain.join(', ')
     
-    result = Result.create(:game_id => self.id, :degree => degree, :discipline => discipline.to_s, :exhaustion => exhaustion.to_s, :madness => madness.to_s, :pain => pain.to_s, :winner => wins, :dominating => dominating)
+    result = Result.create(:game_id => self.id, :discipline => discipline.to_s, :exhaustion => exhaustion.to_s, :madness => madness.to_s, :pain => pain.to_s)
+    result.determine!(char_name)
+        
+    # bump despair count if pain is dominant
+    if result.dominating == :pain
+      self.despair += 1
+    end
     
     self.save!
     self.results << result
