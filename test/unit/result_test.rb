@@ -20,7 +20,7 @@ class ResultTest < ActiveSupport::TestCase
     orig_win = @result.winner
     orig_dom = @result.dominating
     
-    @result.recall!(:discipline)
+    @result.recall!('discipline')
     @result = Result.find(results(:one).id)
     
     assert_not_equal orig_win, @result.winner
