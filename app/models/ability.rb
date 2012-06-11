@@ -18,6 +18,9 @@ class Ability
     can :manage, Play do |p|
       p.game.gm_id == user.id
     end
+    can :recall, Result do |r|
+      r.game.gm_id == user.id
+    end
     
     # actions players can do
     can :shed_light, Game do |g|

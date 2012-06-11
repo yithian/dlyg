@@ -15,7 +15,6 @@ class ResultControllerTest < ActionController::TestCase
     
     # puts @result.pain
     @result.pain = ''
-    puts @result.pain
     @result.save!
     
     xhr :put, :recall, id: @result, pool: 'discipline'
