@@ -17,11 +17,10 @@ class ResultTest < ActiveSupport::TestCase
   
   test 'recall a scar' do
     @result.pain = '4'
-    orig_ts = @result.updated_at
     orig_win = @result.winner
     orig_dom = @result.dominating
     
-    @result.recall(:discipline)
+    @result.recall!(:discipline)
     @result = Result.find(results(:one).id)
     
     assert_not_equal orig_win, @result.winner

@@ -63,17 +63,17 @@ class Result < ActiveRecord::Base
   end
   
   # allows a single (player) dice pool to be rerolled
-  def recall(pool, char_name = 'player')
-    dice = {:discipline => self.discipline, :exhaustion => self.exhaustion, :madness => self.madness}
+  def recall!(pool, char_name = 'player')
+    dice = {'discipline' => self.discipline, 'exhaustion' => self.exhaustion, 'madness' => self.madness}
     
     num_recalled = dice[pool].split(', ').count
     
     recalled = DiceRoller::DicePool.new(0, num_recalled).roll_pool.six_result.reverse
     dice[pool] = recalled.join(', ')
     
-    self.discipline = dice[:discipline]
-    self.exhaustion = dice[:exhaustion]
-    self.madness = dice[:madness]
+    self.discipline = dice['discipline']
+    self.exhaustion = dice['exhaustion']
+    self.madness = dice['madness']
     
     self.determine!(char_name)
   end

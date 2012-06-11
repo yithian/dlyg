@@ -4,6 +4,28 @@ class ResultControllerTest < ActionController::TestCase
   setup do
     @result = results(:one)
   end
+  
+  test 'should recall a scar' do
+    sign_in(users(:one))
+    
+    orig_win = @result.winner
+    orig_dom = @result.dominating
+    orig_pain = @result.pain
+    orig_despair = @result.game.despair
+    
+    # puts @result.pain
+    @result.pain = ''
+    puts @result.pain
+    @result.save!
+    
+    xhr :put, :recall, id: @result, pool: 'discipline'
+    @result = Result.find(@result.id)
+    
+    assert_not_equal orig_win, @result.winner, "winner was not recalculated"
+    assert_not_equal orig_dom, @result.dominating, "dominating was not recalculated"
+    assert_not_equal orig_pain, @result.pain, "pain was not saved"
+    assert_not_equal orig_despair, @result.game.despair, "despair was not recalculated"
+  end
 
   test "should destroy result" do
     sign_in(users(:one))
