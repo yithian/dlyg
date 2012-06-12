@@ -3,7 +3,7 @@
 # actions here just in case they may see future use as
 # well.
 
-class PlayController < ApplicationController
+class PlaysController < ApplicationController
   respond_to :html, :xml
   load_and_authorize_resource
   before_filter :find_play, :only => [:update, :destroy]

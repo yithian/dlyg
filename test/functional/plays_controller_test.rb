@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class PlayControllerTest < ActionController::TestCase
+class PlaysControllerTest < ActionController::TestCase
   def setup
     @play = plays(:one)
   end

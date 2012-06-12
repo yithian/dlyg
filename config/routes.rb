@@ -10,9 +10,9 @@ Dlyg::Application.routes.draw do
       put 'uninvite'
     end
 
-    resources :play, :only => [:create, :update, :destroy]
+    resources :plays, :only => [:create, :update, :destroy]
     
-    resources :result do
+    resources :results do
       member do
         put 'recall'
       end
