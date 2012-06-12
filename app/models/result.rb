@@ -68,7 +68,7 @@ class Result < ActiveRecord::Base
     
     num_recalled = dice[pool].split(', ').count
     
-    recalled = DiceRoller::DicePool.new(0, num_recalled).roll_pool.six_result.reverse
+    recalled = DiceRoller::DicePool.new(0, num_recalled).roll_pool.six_result.sort.reverse
     dice[pool] = recalled.join(', ')
     
     self.discipline = dice['discipline']
