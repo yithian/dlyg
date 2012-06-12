@@ -31,6 +31,9 @@ class Ability
     end
     can :update, Play, :user_id => user.id
     can :destroy, Play, :user_id => user.id
+    can :recall, Result do |r|
+      r.game.players.include?(user)
+    end
     
     # all logged-in users
     can :create, Game if user.id
