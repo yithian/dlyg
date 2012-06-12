@@ -1,0 +1,14 @@
+$('#d_results').html('<%= @result.discipline %>');
+$('#d_results').show();
+$('#d_recall').hide();
+$('#e_results').html('<%= @result.exhaustion %>');
+$('#e_results').show();
+$('#e_recall').hide();
+$('#m_results').html('<%= @result.madness %>');
+$('#m_results').show();
+$('#m_recall').hide();
+$('#p_results').html('<%= @result.pain %>');
+$('#p_results').show();
+$('#results').html('<%= escape_javascript(render :partial => "games/result", :collection => @result.game.results.reverse) %>');
+$('#despair').html('<%= @result.game.despair %>');
+$('#despair_coins').attr('max', '<%= @result.game.despair %>');

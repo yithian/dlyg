@@ -6,22 +6,25 @@
       <tr>
         <td><b><%= label_tag :discipline %></b></td>
         <td><%= number_field_tag :discipline, '3', :min => 0, :autocomplete => :off %></td>
-        <td id="d_results" style="display: none"></td>
+        <td id="d_results"></td>
+        <td id="d_recall"></td>
       </tr>
       <tr>
         <td><b><%= label_tag :exhaustion %></b></td>
         <td><%= number_field_tag :exhaustion, '0', :min => 0, :max => 6, :autocomplete => :off %></td>
-        <td id="e_results" style="display: none"></td>
+        <td id="e_results"></td>
+        <td id="e_recall"></td>
       </tr>
       <tr>
         <td><b><%= label_tag :madness %></b></td>
         <td><%= number_field_tag :madness, '0', :min => 0, :max => 6, :autocomplete => :off %></td>
-        <td id="m_results" style="display: none"></td>
+        <td id="m_results"></td>
+        <td id="m_recall"></td>
       </tr>
       <tr>
         <td><b><%= label_tag :pain %></b></td>
         <td><%= number_field_tag :pain, '0', :min => 0, :autocomplete => :off %></td>
-        <td id="p_results" style="display: none"></td>
+        <td id="p_results"></td>
       </tr>
     </tbody>
     <tfoot>

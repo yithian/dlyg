@@ -1,9 +1,15 @@
 $('#d_results').html('<%= @result.discipline %>');
 $('#d_results').show();
+$('#d_recall').html('<%= recall_link(@result.game, @result, "discipline") %>');
+$('#d_recall').show();
 $('#e_results').html('<%= @result.exhaustion %>');
 $('#e_results').show();
+$('#e_recall').html('<%= recall_link(@result.game, @result, "exhaustion") %>');
+$('#e_recall').show();
 $('#m_results').html('<%= @result.madness %>');
 $('#m_results').show();
+$('#m_recall').html('<%= recall_link(@result.game, @result, "madness") %>');
+$('#m_recall').show();
 $('#p_results').html('<%= @result.pain %>');
 $('#p_results').show();
 $('#results').html('<%= escape_javascript(render :partial => "result", :collection => @game.results.reverse) %>');
