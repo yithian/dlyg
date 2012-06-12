@@ -64,7 +64,19 @@
 </nav>
 
     
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
     
+    <li><a href="#method-i-determine-21">#determine!</a>
+    
+    <li><a href="#method-i-recall-21">#recall!</a>
+    
+  </ul>
+</nav>
+
   </div>
 
   <div id="project-metadata">
@@ -97,15 +109,15 @@
   
     <li><a href="./Play.html">Play</a>
   
-    <li><a href="./PlayController.html">PlayController</a>
-  
     <li><a href="./PlayHelper.html">PlayHelper</a>
+  
+    <li><a href="./PlaysController.html">PlaysController</a>
   
     <li><a href="./Result.html">Result</a>
   
-    <li><a href="./ResultController.html">ResultController</a>
-  
     <li><a href="./ResultHelper.html">ResultHelper</a>
+  
+    <li><a href="./ResultsController.html">ResultsController</a>
   
     <li><a href="./User.html">User</a>
   
@@ -138,6 +150,135 @@
 
     <!-- Methods -->
     
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-determine-21" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">determine!</span><span
+            class="method-args">(char_name = 'player')</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>counts successes and determines a winner</p>
+          
+
+          
+          <div class="method-source-code" id="determine-21-source">
+            <pre><span class="ruby-comment"># File app/models/result.rb, line 9</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">determine!</span>(<span class="ruby-identifier">char_name</span> = <span class="ruby-string">'player'</span>)
+  <span class="ruby-identifier">degree</span> = <span class="ruby-value">0</span>
+  <span class="ruby-identifier">pain_degree</span> = <span class="ruby-value">0</span>
+  
+  <span class="ruby-comment"># count successes for player pools</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">discipline</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">', '</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">n</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">n</span> = <span class="ruby-identifier">n</span>.<span class="ruby-identifier">to_i</span>
+    
+    <span class="ruby-identifier">degree</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">n</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-value">3</span>
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">exhaustion</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">', '</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">n</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">n</span> = <span class="ruby-identifier">n</span>.<span class="ruby-identifier">to_i</span>
+    
+    <span class="ruby-identifier">degree</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">n</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-value">3</span>
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">madness</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">', '</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">n</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">n</span> = <span class="ruby-identifier">n</span>.<span class="ruby-identifier">to_i</span>
+    
+    <span class="ruby-identifier">degree</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">n</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-value">3</span>
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">pain</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">', '</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">n</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">n</span> = <span class="ruby-identifier">n</span>.<span class="ruby-identifier">to_i</span>
+    
+    <span class="ruby-identifier">pain_degree</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">n</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-value">3</span>
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-comment"># determine who wins</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">degree</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-identifier">pain_degree</span>
+    <span class="ruby-identifier">wins</span> = <span class="ruby-identifier">char_name</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">wins</span> = <span class="ruby-value">:pain</span>
+    <span class="ruby-identifier">degree</span> = <span class="ruby-identifier">pain_degree</span>
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-comment"># determine which pool is dominant</span>
+  <span class="ruby-comment"># there is some trickery here: the order of assignment is important.</span>
+  <span class="ruby-comment"># due to the hierarchy of tie-breakers, &quot;tied&quot; elements assigned later</span>
+  <span class="ruby-comment"># in the hash will overwrite earlier elements. so later elements</span>
+  <span class="ruby-comment"># &quot;beat&quot; earlier ones</span>
+  <span class="ruby-identifier">dominant</span> = {<span class="ruby-identifier">pain</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:pain</span>, <span class="ruby-identifier">exhaustion</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:exhaustion</span>, <span class="ruby-identifier">madness</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:madness</span>, <span class="ruby-identifier">discipline</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:discipline</span> }
+  
+  <span class="ruby-identifier">dominating</span> = <span class="ruby-identifier">dominant</span>[<span class="ruby-identifier">dominant</span>.<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">max</span>]
+  
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">winner</span> = <span class="ruby-identifier">wins</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">degree</span> = <span class="ruby-identifier">degree</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">discipline</span> = <span class="ruby-identifier">discipline</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">exhaustion</span> = <span class="ruby-identifier">exhaustion</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">madness</span> = <span class="ruby-identifier">madness</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">pain</span> = <span class="ruby-identifier">pain</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">dominating</span> = <span class="ruby-identifier">dominating</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">save</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- determine-21-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- determine-21-method -->
+
+    
+      <div id="method-i-recall-21" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">recall!</span><span
+            class="method-args">(pool, char_name = 'player')</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>allows a single (player) dice pool to be rerolled</p>
+          
+
+          
+          <div class="method-source-code" id="recall-21-source">
+            <pre><span class="ruby-comment"># File app/models/result.rb, line 66</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">recall!</span>(<span class="ruby-identifier">pool</span>, <span class="ruby-identifier">char_name</span> = <span class="ruby-string">'player'</span>)
+  <span class="ruby-identifier">dice</span> = {<span class="ruby-string">'discipline'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">discipline</span>, <span class="ruby-string">'exhaustion'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">exhaustion</span>, <span class="ruby-string">'madness'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">madness</span>}
+  
+  <span class="ruby-identifier">num_recalled</span> = <span class="ruby-identifier">dice</span>[<span class="ruby-identifier">pool</span>].<span class="ruby-identifier">split</span>(<span class="ruby-string">', '</span>).<span class="ruby-identifier">count</span>
+  
+  <span class="ruby-identifier">recalled</span> = <span class="ruby-constant">DiceRoller</span><span class="ruby-operator">::</span><span class="ruby-constant">DicePool</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">0</span>, <span class="ruby-identifier">num_recalled</span>).<span class="ruby-identifier">roll_pool</span>.<span class="ruby-identifier">six_result</span>.<span class="ruby-identifier">sort</span>.<span class="ruby-identifier">reverse</span>
+  <span class="ruby-identifier">dice</span>[<span class="ruby-identifier">pool</span>] = <span class="ruby-identifier">recalled</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">', '</span>)
+  
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">discipline</span> = <span class="ruby-identifier">dice</span>[<span class="ruby-string">'discipline'</span>]
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">exhaustion</span> = <span class="ruby-identifier">dice</span>[<span class="ruby-string">'exhaustion'</span>]
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">madness</span> = <span class="ruby-identifier">dice</span>[<span class="ruby-string">'madness'</span>]
+  
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">determine!</span>(<span class="ruby-identifier">char_name</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- recall-21-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- recall-21-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
   </section><!-- 5Buntitled-5D -->
 
 </div><!-- documentation -->

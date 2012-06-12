@@ -1,15 +1,15 @@
-Fri, 08 Jun 2012 15:02:29 -0400
+Tue, 12 Jun 2012 14:41:37 -0400
 doc/README_FOR_APP	Fri, 08 Jun 2012 14:22:40 -0400
 app/models/play.rb	Fri, 08 Jun 2012 14:21:00 -0400
 app/models/user.rb	Fri, 08 Jun 2012 14:21:59 -0400
-app/models/result.rb	Fri, 08 Jun 2012 14:21:36 -0400
-app/models/game.rb	Fri, 08 Jun 2012 14:13:27 -0400
-app/models/ability.rb	Fri, 08 Jun 2012 15:02:24 -0400
+app/models/result.rb	Tue, 12 Jun 2012 09:33:06 -0400
+app/models/game.rb	Tue, 12 Jun 2012 09:33:06 -0400
+app/models/ability.rb	Tue, 12 Jun 2012 09:33:06 -0400
 app/helpers/application_helper.rb	Fri, 08 Jun 2012 14:46:33 -0400
 app/helpers/result_helper.rb	Fri, 08 Jun 2012 14:48:28 -0400
 app/helpers/play_helper.rb	Fri, 08 Jun 2012 14:48:03 -0400
-app/helpers/game_helper.rb	Fri, 08 Jun 2012 14:53:14 -0400
-app/controllers/result_controller.rb	Fri, 08 Jun 2012 14:39:13 -0400
-app/controllers/play_controller.rb	Fri, 08 Jun 2012 14:38:04 -0400
+app/helpers/game_helper.rb	Tue, 12 Jun 2012 09:33:06 -0400
+app/controllers/plays_controller.rb	Tue, 12 Jun 2012 09:33:06 -0400
+app/controllers/results_controller.rb	Tue, 12 Jun 2012 09:33:06 -0400
 app/controllers/application_controller.rb	Fri, 08 Jun 2012 14:28:18 -0400
 app/controllers/games_controller.rb	Fri, 08 Jun 2012 14:36:03 -0400

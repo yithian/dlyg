@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 
-<title>class PlayController - Rails Application Documentation</title>
+<title>class ResultsController - Rails Application Documentation</title>
 
 <link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
 
@@ -47,7 +47,7 @@
     <nav id="file-list-section" class="section">
   <h3 class="section-header">Defined In</h3>
   <ul>
-    <li>app/controllers/play_controller.rb
+    <li>app/controllers/results_controller.rb
   </ul>
 </nav>
 
@@ -70,11 +70,9 @@
 
   <ul class="link-list">
     
-    <li><a href="#method-i-create">#create</a>
-    
     <li><a href="#method-i-destroy">#destroy</a>
     
-    <li><a href="#method-i-update">#update</a>
+    <li><a href="#method-i-recall">#recall</a>
     
   </ul>
 </nav>
@@ -111,15 +109,15 @@
   
     <li><a href="./Play.html">Play</a>
   
-    <li><a href="./PlayController.html">PlayController</a>
-  
     <li><a href="./PlayHelper.html">PlayHelper</a>
+  
+    <li><a href="./PlaysController.html">PlaysController</a>
   
     <li><a href="./Result.html">Result</a>
   
-    <li><a href="./ResultController.html">ResultController</a>
-  
     <li><a href="./ResultHelper.html">ResultHelper</a>
+  
+    <li><a href="./ResultsController.html">ResultsController</a>
   
     <li><a href="./User.html">User</a>
   
@@ -130,13 +128,12 @@
 </nav>
 
 <div id="documentation">
-  <h1 class="class">class PlayController</h1>
+  <h1 class="class">class ResultsController</h1>
 
   <div id="description" class="description">
     
-<p><a href="PlayController.html">PlayController</a> exists pretty much just to
-have route shortcuts to destroy a <a href="Play.html">Play</a>. There are a
-couple other actions here just in case they may see future use as well.</p>
+<p>ResultController literally exists just so GMs can easily remove rolls from
+their games’ history.</p>
 
   </div><!-- description -->
 
@@ -158,39 +155,6 @@ couple other actions here just in case they may see future use as well.</p>
       <h3 class="section-header">Public Instance Methods</h3>
 
     
-      <div id="method-i-create" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">create</span><span
-            class="method-args">()</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-        
-
-        <div class="method-description">
-          
-          <p>POST /games/1/play/1</p>
-          
-
-          
-          <div class="method-source-code" id="create-source">
-            <pre><span class="ruby-comment"># File app/controllers/play_controller.rb, line 12</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span>
-  <span class="ruby-ivar">@play</span> = <span class="ruby-constant">Play</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:play</span>])
-  <span class="ruby-ivar">@play</span>.<span class="ruby-identifier">save</span>
-
-  <span class="ruby-identifier">respond_with</span> <span class="ruby-ivar">@play</span>.<span class="ruby-identifier">game</span>
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- create-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- create-method -->
-
-    
       <div id="method-i-destroy" class="method-detail ">
         
         <div class="method-heading">
@@ -202,18 +166,19 @@ couple other actions here just in case they may see future use as well.</p>
 
         <div class="method-description">
           
-          <p>DELETE /games/1/play/1</p>
+          <p>DELETE /games/1/results/1 DELETE /games/1/results/1.json</p>
           
 
           
           <div class="method-source-code" id="destroy-source">
-            <pre><span class="ruby-comment"># File app/controllers/play_controller.rb, line 27</span>
+            <pre><span class="ruby-comment"># File app/controllers/results_controller.rb, line 11</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">destroy</span>
-  <span class="ruby-identifier">game</span> = <span class="ruby-ivar">@play</span>.<span class="ruby-identifier">game</span>
-  <span class="ruby-ivar">@play</span>.<span class="ruby-identifier">destroy</span>
+  <span class="ruby-ivar">@game</span> = <span class="ruby-ivar">@result</span>.<span class="ruby-identifier">game</span>
+  <span class="ruby-ivar">@result</span>.<span class="ruby-identifier">destroy</span>
 
   <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">game</span> }
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span> <span class="ruby-ivar">@game</span> }
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">head</span> <span class="ruby-value">:no_content</span> }
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- destroy-source -->
@@ -226,10 +191,10 @@ couple other actions here just in case they may see future use as well.</p>
       </div><!-- destroy-method -->
 
     
-      <div id="method-i-update" class="method-detail ">
+      <div id="method-i-recall" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">update</span><span
+          <span class="method-name">recall</span><span
             class="method-args">()</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
@@ -237,25 +202,35 @@ couple other actions here just in case they may see future use as well.</p>
 
         <div class="method-description">
           
-          <p>PUT /games/1/play/1</p>
+          <p>PUT /games/1/result/1/recall</p>
           
 
           
-          <div class="method-source-code" id="update-source">
-            <pre><span class="ruby-comment"># File app/controllers/play_controller.rb, line 20</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span>
-  <span class="ruby-ivar">@play</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:play</span>])
+          <div class="method-source-code" id="recall-source">
+            <pre><span class="ruby-comment"># File app/controllers/results_controller.rb, line 22</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">recall</span>
+  <span class="ruby-identifier">former_domminating</span> = <span class="ruby-ivar">@result</span>.<span class="ruby-identifier">dominating</span>
+  
+  <span class="ruby-ivar">@result</span>.<span class="ruby-identifier">recall!</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:pool</span>])
+  
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">former_domminating</span> <span class="ruby-operator">==</span> <span class="ruby-string">'pain'</span> <span class="ruby-keyword">and</span> <span class="ruby-ivar">@result</span>.<span class="ruby-identifier">dominating</span> <span class="ruby-operator">!=</span> <span class="ruby-string">'pain'</span>
+    <span class="ruby-identifier">game</span> = <span class="ruby-ivar">@result</span>.<span class="ruby-identifier">game</span>
+    <span class="ruby-identifier">game</span>.<span class="ruby-identifier">despair</span> <span class="ruby-operator">-=</span> <span class="ruby-value">1</span>
+    <span class="ruby-identifier">game</span>.<span class="ruby-identifier">save</span>
+  <span class="ruby-keyword">end</span>
 
-  <span class="ruby-identifier">respond_with</span> <span class="ruby-ivar">@play</span>.<span class="ruby-identifier">game</span>
+  <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">js</span>
+  <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- update-source -->
+          </div><!-- recall-source -->
           
         </div>
 
         
 
         
-      </div><!-- update-method -->
+      </div><!-- recall-method -->
 
     
     </section><!-- public-instance-method-details -->

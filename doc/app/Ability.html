@@ -119,15 +119,15 @@
   
     <li><a href="./Play.html">Play</a>
   
-    <li><a href="./PlayController.html">PlayController</a>
-  
     <li><a href="./PlayHelper.html">PlayHelper</a>
+  
+    <li><a href="./PlaysController.html">PlaysController</a>
   
     <li><a href="./Result.html">Result</a>
   
-    <li><a href="./ResultController.html">ResultController</a>
-  
     <li><a href="./ResultHelper.html">ResultHelper</a>
+  
+    <li><a href="./ResultsController.html">ResultsController</a>
   
     <li><a href="./User.html">User</a>
   
@@ -195,6 +195,9 @@
   <span class="ruby-identifier">can</span> <span class="ruby-value">:manage</span>, <span class="ruby-constant">Play</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">p</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">p</span>.<span class="ruby-identifier">game</span>.<span class="ruby-identifier">gm_id</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">id</span>
   <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">can</span> <span class="ruby-value">:recall</span>, <span class="ruby-constant">Result</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">r</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">r</span>.<span class="ruby-identifier">game</span>.<span class="ruby-identifier">gm_id</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">id</span>
+  <span class="ruby-keyword">end</span>
   
   <span class="ruby-comment"># actions players can do</span>
   <span class="ruby-identifier">can</span> <span class="ruby-value">:shed_light</span>, <span class="ruby-constant">Game</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">g</span><span class="ruby-operator">|</span>
@@ -205,6 +208,9 @@
   <span class="ruby-keyword">end</span>
   <span class="ruby-identifier">can</span> <span class="ruby-value">:update</span>, <span class="ruby-constant">Play</span>, <span class="ruby-value">:user_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">id</span>
   <span class="ruby-identifier">can</span> <span class="ruby-value">:destroy</span>, <span class="ruby-constant">Play</span>, <span class="ruby-value">:user_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">id</span>
+  <span class="ruby-identifier">can</span> <span class="ruby-value">:recall</span>, <span class="ruby-constant">Result</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">r</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">r</span>.<span class="ruby-identifier">game</span>.<span class="ruby-identifier">players</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">user</span>)
+  <span class="ruby-keyword">end</span>
   
   <span class="ruby-comment"># all logged-in users</span>
   <span class="ruby-identifier">can</span> <span class="ruby-value">:create</span>, <span class="ruby-constant">Game</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">id</span>

@@ -113,15 +113,15 @@
   
     <li><a href="./Play.html">Play</a>
   
-    <li><a href="./PlayController.html">PlayController</a>
-  
     <li><a href="./PlayHelper.html">PlayHelper</a>
+  
+    <li><a href="./PlaysController.html">PlaysController</a>
   
     <li><a href="./Result.html">Result</a>
   
-    <li><a href="./ResultController.html">ResultController</a>
-  
     <li><a href="./ResultHelper.html">ResultHelper</a>
+  
+    <li><a href="./ResultsController.html">ResultsController</a>
   
     <li><a href="./User.html">User</a>
   
@@ -176,7 +176,7 @@ and for dice results. This is also where rolling dice occurs.</p>
 
           
           <div class="method-source-code" id="cast_shadow-source">
-            <pre><span class="ruby-comment"># File app/models/game.rb, line 109</span>
+            <pre><span class="ruby-comment"># File app/models/game.rb, line 60</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">cast_shadow</span>(<span class="ruby-identifier">coins</span> = <span class="ruby-value">1</span>)
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">despair</span> <span class="ruby-operator">-=</span> <span class="ruby-identifier">coins</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">hope</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">coins</span>
@@ -212,74 +212,19 @@ for discipline, exhaustion, madness and pain pools</p>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">roll</span>(<span class="ruby-identifier">discipline_dice</span> = <span class="ruby-value">0</span>, <span class="ruby-identifier">exhaustion_dice</span> = <span class="ruby-value">0</span>, <span class="ruby-identifier">madness_dice</span> = <span class="ruby-value">0</span>, <span class="ruby-identifier">pain_dice</span> = <span class="ruby-value">0</span>, <span class="ruby-identifier">char_name</span> = <span class="ruby-string">'player'</span>)
   <span class="ruby-comment"># in case an empty name is passed</span>
   <span class="ruby-identifier">char_name</span> = <span class="ruby-string">'player'</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">char_name</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">char_name</span>.<span class="ruby-identifier">empty?</span>
-  <span class="ruby-identifier">degree</span> = <span class="ruby-value">0</span>
-  <span class="ruby-identifier">discipline_degree</span> = <span class="ruby-value">0</span>
-  <span class="ruby-identifier">exhaustion_degree</span> = <span class="ruby-value">0</span>
-  <span class="ruby-identifier">madness_degree</span> = <span class="ruby-value">0</span>
-  <span class="ruby-identifier">pain_degree</span> = <span class="ruby-value">0</span>
   
-  <span class="ruby-comment"># count degree of player pools</span>
+  <span class="ruby-comment"># roll dice</span>
   <span class="ruby-identifier">pool</span> = <span class="ruby-constant">DiceRoller</span><span class="ruby-operator">::</span><span class="ruby-constant">DicePool</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">0</span>, <span class="ruby-identifier">discipline_dice</span>)
   <span class="ruby-identifier">discipline</span> = <span class="ruby-identifier">pool</span>.<span class="ruby-identifier">roll_pool</span>.<span class="ruby-identifier">six_result</span>.<span class="ruby-identifier">sort</span>.<span class="ruby-identifier">reverse</span>
-
-  <span class="ruby-identifier">discipline</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">d</span><span class="ruby-operator">|</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">d</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-value">3</span>
-      <span class="ruby-identifier">degree</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
-      <span class="ruby-identifier">discipline_degree</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
-    <span class="ruby-keyword">end</span>
-  <span class="ruby-keyword">end</span>
   
   <span class="ruby-identifier">pool</span>.<span class="ruby-identifier">num_six</span> = <span class="ruby-identifier">exhaustion_dice</span>
   <span class="ruby-identifier">exhaustion</span> = <span class="ruby-identifier">pool</span>.<span class="ruby-identifier">roll_pool</span>.<span class="ruby-identifier">six_result</span>.<span class="ruby-identifier">sort</span>.<span class="ruby-identifier">reverse</span>
   
-  <span class="ruby-identifier">exhaustion</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">e</span><span class="ruby-operator">|</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">e</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-value">3</span>
-      <span class="ruby-identifier">degree</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
-      <span class="ruby-identifier">exhaustion_degree</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
-    <span class="ruby-keyword">end</span>
-  <span class="ruby-keyword">end</span>
-  
   <span class="ruby-identifier">pool</span>.<span class="ruby-identifier">num_six</span> = <span class="ruby-identifier">madness_dice</span>
   <span class="ruby-identifier">madness</span> = <span class="ruby-identifier">pool</span>.<span class="ruby-identifier">roll_pool</span>.<span class="ruby-identifier">six_result</span>.<span class="ruby-identifier">sort</span>.<span class="ruby-identifier">reverse</span>
   
-  <span class="ruby-identifier">madness</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">m</span><span class="ruby-operator">|</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">m</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-value">3</span>
-      <span class="ruby-identifier">degree</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
-      <span class="ruby-identifier">madness_degree</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
-    <span class="ruby-keyword">end</span>
-  <span class="ruby-keyword">end</span>
-  
-  <span class="ruby-comment"># count degree of pain</span>
   <span class="ruby-identifier">pool</span>.<span class="ruby-identifier">num_six</span> = <span class="ruby-identifier">pain_dice</span>
   <span class="ruby-identifier">pain</span> = <span class="ruby-identifier">pool</span>.<span class="ruby-identifier">roll_pool</span>.<span class="ruby-identifier">six_result</span>.<span class="ruby-identifier">sort</span>.<span class="ruby-identifier">reverse</span>
-  
-  <span class="ruby-identifier">pain</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">p</span><span class="ruby-operator">|</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">p</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-value">3</span>
-      <span class="ruby-identifier">pain_degree</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
-    <span class="ruby-keyword">end</span>
-  <span class="ruby-keyword">end</span>
-  
-  <span class="ruby-comment"># determine who wins</span>
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">degree</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-identifier">pain_degree</span>
-    <span class="ruby-identifier">wins</span> = <span class="ruby-identifier">char_name</span>
-  <span class="ruby-keyword">else</span>
-    <span class="ruby-identifier">wins</span> = <span class="ruby-value">:pain</span>
-    <span class="ruby-identifier">degree</span> = <span class="ruby-identifier">pain_degree</span>
-  <span class="ruby-keyword">end</span>
-  
-  <span class="ruby-comment"># determine which pool is dominant</span>
-  <span class="ruby-comment"># there is some trickery here: the order of assignment is important.</span>
-  <span class="ruby-comment"># due to the hierarchy of tie-breakers, &quot;tied&quot; elements assigned later</span>
-  <span class="ruby-comment"># in the hash will overwrite earlier elements. so later elements</span>
-  <span class="ruby-comment"># &quot;beat&quot; earlier ones</span>
-  <span class="ruby-identifier">dominant</span> = {<span class="ruby-identifier">pain</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:pain</span>, <span class="ruby-identifier">exhaustion</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:exhaustion</span>, <span class="ruby-identifier">madness</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:madness</span>, <span class="ruby-identifier">discipline</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:discipline</span> }
-  
-  <span class="ruby-identifier">dominating</span> = <span class="ruby-identifier">dominant</span>[<span class="ruby-identifier">dominant</span>.<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">max</span>]
-  
-  <span class="ruby-comment"># bump despair count if pain is dominant</span>
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">dominating</span> <span class="ruby-operator">==</span> <span class="ruby-value">:pain</span>
-    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">despair</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
-  <span class="ruby-keyword">end</span>
   
   <span class="ruby-comment"># create a new result and save it</span>
   <span class="ruby-identifier">discipline</span> = <span class="ruby-identifier">discipline</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">', '</span>)
@@ -287,7 +232,13 @@ for discipline, exhaustion, madness and pain pools</p>
   <span class="ruby-identifier">madness</span> = <span class="ruby-identifier">madness</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">', '</span>)
   <span class="ruby-identifier">pain</span> = <span class="ruby-identifier">pain</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">', '</span>)
   
-  <span class="ruby-identifier">result</span> = <span class="ruby-constant">Result</span>.<span class="ruby-identifier">create</span>(<span class="ruby-value">:game_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">id</span>, <span class="ruby-value">:degree</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">degree</span>, <span class="ruby-value">:discipline</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">discipline</span>.<span class="ruby-identifier">to_s</span>, <span class="ruby-value">:exhaustion</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">exhaustion</span>.<span class="ruby-identifier">to_s</span>, <span class="ruby-value">:madness</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">madness</span>.<span class="ruby-identifier">to_s</span>, <span class="ruby-value">:pain</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">pain</span>.<span class="ruby-identifier">to_s</span>, <span class="ruby-value">:winner</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">wins</span>, <span class="ruby-value">:dominating</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">dominating</span>)
+  <span class="ruby-identifier">result</span> = <span class="ruby-constant">Result</span>.<span class="ruby-identifier">create</span>(<span class="ruby-value">:game_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">id</span>, <span class="ruby-value">:discipline</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">discipline</span>.<span class="ruby-identifier">to_s</span>, <span class="ruby-value">:exhaustion</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">exhaustion</span>.<span class="ruby-identifier">to_s</span>, <span class="ruby-value">:madness</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">madness</span>.<span class="ruby-identifier">to_s</span>, <span class="ruby-value">:pain</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">pain</span>.<span class="ruby-identifier">to_s</span>)
+  <span class="ruby-identifier">result</span>.<span class="ruby-identifier">determine!</span>(<span class="ruby-identifier">char_name</span>)
+      
+  <span class="ruby-comment"># bump despair count if pain is dominant</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">result</span>.<span class="ruby-identifier">dominating</span> <span class="ruby-operator">==</span> <span class="ruby-value">:pain</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">despair</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+  <span class="ruby-keyword">end</span>
   
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">save!</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">results</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">result</span>
@@ -323,7 +274,7 @@ for discipline, exhaustion, madness and pain pools</p>
 
           
           <div class="method-source-code" id="shed_light-source">
-            <pre><span class="ruby-comment"># File app/models/game.rb, line 115</span>
+            <pre><span class="ruby-comment"># File app/models/game.rb, line 66</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">shed_light</span>(<span class="ruby-identifier">coins</span> = <span class="ruby-value">1</span>)
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">hope</span> <span class="ruby-operator">-=</span> <span class="ruby-identifier">coins</span>
 <span class="ruby-keyword">end</span></pre>
@@ -353,7 +304,7 @@ for discipline, exhaustion, madness and pain pools</p>
 
           
           <div class="method-source-code" id="to_param-source">
-            <pre><span class="ruby-comment"># File app/models/game.rb, line 120</span>
+            <pre><span class="ruby-comment"># File app/models/game.rb, line 71</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">to_param</span>
   <span class="ruby-node">&quot;#{self.id}_#{self.name.gsub(/[ '&quot;#%\{\}|\\^~\[\]`]/, '-').gsub(/[.&amp;?\/:;=@]/, '')}&quot;</span>    
 <span class="ruby-keyword">end</span></pre>

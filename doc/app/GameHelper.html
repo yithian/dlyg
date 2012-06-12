@@ -58,7 +58,17 @@
     
     
     
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
     
+    <li><a href="#method-i-recall_link">#recall_link</a>
+    
+  </ul>
+</nav>
+
   </div>
 
   <div id="project-metadata">
@@ -91,15 +101,15 @@
   
     <li><a href="./Play.html">Play</a>
   
-    <li><a href="./PlayController.html">PlayController</a>
-  
     <li><a href="./PlayHelper.html">PlayHelper</a>
+  
+    <li><a href="./PlaysController.html">PlaysController</a>
   
     <li><a href="./Result.html">Result</a>
   
-    <li><a href="./ResultController.html">ResultController</a>
-  
     <li><a href="./ResultHelper.html">ResultHelper</a>
+  
+    <li><a href="./ResultsController.html">ResultsController</a>
   
     <li><a href="./User.html">User</a>
   
@@ -132,6 +142,44 @@
 
     <!-- Methods -->
     
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-recall_link" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">recall_link</span><span
+            class="method-args">(game, result, pool)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>returns an ajax link to recall a scar for a given dice pool</p>
+          
+
+          
+          <div class="method-source-code" id="recall_link-source">
+            <pre><span class="ruby-comment"># File app/helpers/game_helper.rb, line 5</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">recall_link</span>(<span class="ruby-identifier">game</span>, <span class="ruby-identifier">result</span>, <span class="ruby-identifier">pool</span>)
+  <span class="ruby-identifier">pools</span> = {<span class="ruby-string">'discipline'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">result</span>.<span class="ruby-identifier">discipline</span>, <span class="ruby-string">'exhaustion'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">result</span>.<span class="ruby-identifier">exhaustion</span>, <span class="ruby-string">'madness'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">result</span>.<span class="ruby-identifier">madness</span>}
+  
+  <span class="ruby-identifier">escape_javascript</span>(<span class="ruby-identifier">link_to</span> <span class="ruby-string">&quot;Recall a scar&quot;</span>, <span class="ruby-identifier">recall_game_result_path</span>(<span class="ruby-identifier">game</span>, <span class="ruby-identifier">result</span>, <span class="ruby-value">:pool</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">pool</span>), <span class="ruby-value">:method</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:put</span>, <span class="ruby-value">:remote</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">pools</span>[<span class="ruby-identifier">pool</span>].<span class="ruby-identifier">empty?</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- recall_link-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- recall_link-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
   </section><!-- 5Buntitled-5D -->
 
 </div><!-- documentation -->
