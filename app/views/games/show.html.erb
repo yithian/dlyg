@@ -35,13 +35,6 @@
   <% end if can? :roll_dice, @game -%>
 </table>
 
-<h3>Characters</h3>
-<table id="plays">
-  <tbody>
-    <%= render :partial => 'play', :collection => @game.plays %>
-  </tbody>
-</table>
-
 <h3 id="results_h">Results</h3>
 <ul class="menu" id="results">
 	<%= render :partial => 'result', :collection => @game.results.reverse %>
@@ -76,6 +69,13 @@
     </tr>
   </tbody>
 </table> <br />
+
+<h3>Characters</h3>
+<table id="plays">
+  <tbody>
+    <%= render :partial => 'play', :collection => @game.plays %>
+  </tbody>
+</table>
 
 <%= link_to 'Edit', edit_game_path(@game) %> |
 <%= link_to 'Back', games_path %>
