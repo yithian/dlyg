@@ -7,7 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <h1>Don't Lose Your Game</h1>
+  <h1><%= link_to "Don't Lose Your Game", root_path %></h1>
 	
   <p id="notice"><%= notice %></p>
   <p id="alert"><%= alert %></p>
@@ -17,6 +17,7 @@
   <ul class='menu'>
     <%= render 'devise/menu/login_items' %>
     <%= render 'devise/menu/registration_items' %>
+    <%= link_to "About", about_path %>
   </ul>
 </body>
 </html>

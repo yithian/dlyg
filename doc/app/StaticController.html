@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 
-<title>class PlaysController - Rails Application Documentation</title>
+<title>class StaticController - Rails Application Documentation</title>
 
 <link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
 
@@ -47,7 +47,7 @@
     <nav id="file-list-section" class="section">
   <h3 class="section-header">Defined In</h3>
   <ul>
-    <li>app/controllers/plays_controller.rb
+    <li>app/controllers/static_controller.rb
   </ul>
 </nav>
 
@@ -70,11 +70,7 @@
 
   <ul class="link-list">
     
-    <li><a href="#method-i-create">#create</a>
-    
-    <li><a href="#method-i-destroy">#destroy</a>
-    
-    <li><a href="#method-i-update">#update</a>
+    <li><a href="#method-i-about">#about</a>
     
   </ul>
 </nav>
@@ -134,13 +130,11 @@
 </nav>
 
 <div id="documentation">
-  <h1 class="class">class PlaysController</h1>
+  <h1 class="class">class StaticController</h1>
 
   <div id="description" class="description">
     
-<p>PlayController exists pretty much just to have route shortcuts to destroy a
-<a href="Play.html">Play</a>. There are a couple other actions here just in
-case they may see future use as well.</p>
+<p>this controller is only to route users to ‘static’ pages</p>
 
   </div><!-- description -->
 
@@ -162,10 +156,10 @@ case they may see future use as well.</p>
       <h3 class="section-header">Public Instance Methods</h3>
 
     
-      <div id="method-i-create" class="method-detail ">
+      <div id="method-i-about" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">create</span><span
+          <span class="method-name">about</span><span
             class="method-args">()</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
@@ -173,93 +167,22 @@ case they may see future use as well.</p>
 
         <div class="method-description">
           
-          <p>POST /games/1/play/1</p>
+          <p>GET /about</p>
           
 
           
-          <div class="method-source-code" id="create-source">
-            <pre><span class="ruby-comment"># File app/controllers/plays_controller.rb, line 12</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span>
-  <span class="ruby-ivar">@play</span> = <span class="ruby-constant">Play</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:play</span>])
-  <span class="ruby-ivar">@play</span>.<span class="ruby-identifier">save</span>
-
-  <span class="ruby-identifier">respond_with</span> <span class="ruby-ivar">@play</span>.<span class="ruby-identifier">game</span>
+          <div class="method-source-code" id="about-source">
+            <pre><span class="ruby-comment"># File app/controllers/static_controller.rb, line 8</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">about</span>
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- create-source -->
+          </div><!-- about-source -->
           
         </div>
 
         
 
         
-      </div><!-- create-method -->
-
-    
-      <div id="method-i-destroy" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">destroy</span><span
-            class="method-args">()</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-        
-
-        <div class="method-description">
-          
-          <p>DELETE /games/1/play/1</p>
-          
-
-          
-          <div class="method-source-code" id="destroy-source">
-            <pre><span class="ruby-comment"># File app/controllers/plays_controller.rb, line 27</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">destroy</span>
-  <span class="ruby-identifier">game</span> = <span class="ruby-ivar">@play</span>.<span class="ruby-identifier">game</span>
-  <span class="ruby-ivar">@play</span>.<span class="ruby-identifier">destroy</span>
-
-  <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">game</span> }
-  <span class="ruby-keyword">end</span>
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- destroy-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- destroy-method -->
-
-    
-      <div id="method-i-update" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">update</span><span
-            class="method-args">()</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-        
-
-        <div class="method-description">
-          
-          <p>PUT /games/1/play/1</p>
-          
-
-          
-          <div class="method-source-code" id="update-source">
-            <pre><span class="ruby-comment"># File app/controllers/plays_controller.rb, line 20</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span>
-  <span class="ruby-ivar">@play</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:play</span>])
-
-  <span class="ruby-identifier">respond_with</span> <span class="ruby-ivar">@play</span>.<span class="ruby-identifier">game</span>
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- update-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- update-method -->
+      </div><!-- about-method -->
 
     
     </section><!-- public-instance-method-details -->

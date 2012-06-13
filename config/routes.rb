@@ -19,6 +19,8 @@ Dlyg::Application.routes.draw do
     end
   end
 
+  match '/about' => 'static#about', :as => 'about'
+
   root :to => 'games#index'
 
   # See how all your routes lay out with "rake routes"
