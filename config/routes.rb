@@ -17,6 +17,8 @@ Dlyg::Application.routes.draw do
         put 'recall'
       end
     end
+
+    resources :characters, :except => [:index, :new, :create, :destroy]
   end
 
   match '/about' => 'static#about', :as => 'about'

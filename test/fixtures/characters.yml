@@ -1,0 +1,48 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  game: two
+  player: one
+  name: MyString
+  concept: MyString
+  keeping_awake: MyText
+  just_happened: MyText
+  surface: MyText
+  beneath: MyText
+  path: MyText
+  discipline: 2
+  exhaustion: 1
+  madness: 1
+  e_talent: MyText
+  m_talent: MyText
+
+two:
+  game: one
+  player: two
+  name: MyOtherString
+  concept: MyOtherString
+  keeping_awake: MyOtherText
+  just_happened: MyOtherText
+  surface: MyOtherText
+  beneath: MyOtherText
+  path: MyOtherText
+  discipline: 1
+  exhaustion: 3
+  madness: 2
+  e_talent: MyOtherText
+  m_talent: MyOtherText
+
+three:
+  game: two
+  name: MyThirdString
+  concept: MyThirdString
+  keeping_awake: MyThirdText
+  just_happened: MyThirdText
+  surface: MyThirdText
+  beneath: MyThirdText
+  path: MyThirdText
+  discipline: 1
+  exhaustion: 3
+  madness: 2
+  e_talent: MyThirdText
+  m_talent: MyThirdText

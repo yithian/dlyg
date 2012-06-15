@@ -1,0 +1,49 @@
+<h1>Listing characters</h1>
+
+<table>
+  <tr>
+    <th>Game</th>
+    <th>Player</th>
+    <th>Name</th>
+    <th>Concept</th>
+    <th>Keeping awake</th>
+    <th>Just happened</th>
+    <th>Surface</th>
+    <th>Beneath</th>
+    <th>Path</th>
+    <th>Discipline</th>
+    <th>Exhaustion</th>
+    <th>Madness</th>
+    <th>E talent</th>
+    <th>M talent</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @characters.each do |character| %>
+  <tr>
+    <td><%= character.game_id %></td>
+    <td><%= character.player_id %></td>
+    <td><%= character.name %></td>
+    <td><%= character.concept %></td>
+    <td><%= character.keeping_awake %></td>
+    <td><%= character.just_happened %></td>
+    <td><%= character.surface %></td>
+    <td><%= character.beneath %></td>
+    <td><%= character.path %></td>
+    <td><%= character.discipline %></td>
+    <td><%= character.exhaustion %></td>
+    <td><%= character.madness %></td>
+    <td><%= character.e_talent %></td>
+    <td><%= character.m_talent %></td>
+    <td><%= link_to 'Show', character %></td>
+    <td><%= link_to 'Edit', edit_character_path(character) %></td>
+    <td><%= link_to 'Destroy', character, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Character', new_character_path %>

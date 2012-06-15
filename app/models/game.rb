@@ -7,6 +7,7 @@ class Game < ActiveRecord::Base
   has_many :plays
   has_many :players, :through => :plays, :source => :user, :uniq => true
   has_many :results, :dependent => :destroy, :order => "created_at ASC"
+  has_many :characters
   
   attr_accessible :despair, :hope, :name, :gm_id
   

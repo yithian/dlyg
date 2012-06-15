@@ -21,6 +21,9 @@ class Ability
     can :recall, Result do |r|
       r.game.gm_id == user.id
     end
+    can :manage, Character do |c|
+      c.game.gm_id == user.id
+    end
     
     # actions players can do
     can :shed_light, Game do |g|
@@ -34,6 +37,7 @@ class Ability
     can :recall, Result do |r|
       r.game.players.include?(user)
     end
+    can :manage, Character, :player_id => user.id
     
     # all logged-in users
     can :create, Game if user.id

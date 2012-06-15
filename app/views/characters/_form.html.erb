@@ -1,0 +1,73 @@
+<%= form_for([@character.game, @character]) do |f| %>
+  <% if @character.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@character.errors.count, "error") %> prohibited this character from being saved:</h2>
+
+      <ul>
+      <% @character.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :game_id %><br />
+    <%= f.number_field :game_id %>
+  </div>
+  <div class="field">
+    <%= f.label :player_id %><br />
+    <%= f.number_field :player_id %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :concept %><br />
+    <%= f.text_field :concept %>
+  </div>
+  <div class="field">
+    <%= f.label :keeping_awake %><br />
+    <%= f.text_area :keeping_awake %>
+  </div>
+  <div class="field">
+    <%= f.label :just_happened %><br />
+    <%= f.text_area :just_happened %>
+  </div>
+  <div class="field">
+    <%= f.label :surface %><br />
+    <%= f.text_area :surface %>
+  </div>
+  <div class="field">
+    <%= f.label :beneath %><br />
+    <%= f.text_area :beneath %>
+  </div>
+  <div class="field">
+    <%= f.label :path %><br />
+    <%= f.text_area :path %>
+  </div>
+  <div class="field">
+    <%= f.label :discipline %><br />
+    <%= f.number_field :discipline %>
+  </div>
+  <div class="field">
+    <%= f.label :exhaustion %><br />
+    <%= f.number_field :exhaustion %>
+  </div>
+  <div class="field">
+    <%= f.label :madness %><br />
+    <%= f.number_field :madness %>
+  </div>
+  <div class="field">
+    <%= f.label :e_talent %><br />
+    <%= f.text_area :e_talent %>
+  </div>
+  <div class="field">
+    <%= f.label :m_talent %><br />
+    <%= f.text_area :m_talent %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
