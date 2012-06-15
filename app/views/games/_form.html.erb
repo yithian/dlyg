@@ -33,19 +33,3 @@
     <%= f.submit %>
   </div>
 <% end %>
-
-<% if params[:action] == "edit" or params[:action] == "update" -%>
-  <h3>GM</h3>
-  <%= form_for @game do |f| %>
-    <%= f.select :gm_id, options_from_collection_for_select(@game.players + [@game.gm], :id, :email) %>
-    <%= f.submit "Promote player to GM" %>
-  <% end -%>
-
-  <h3>Players</h3>
-  <ul id="players">
-    <%= render :partial => "player", :collection => @game.players %>
-  </ul>  
-  <%= form_tag invite_game_path, :method => :put, :remote => true do %>
-    <%= text_field_tag :email %> <%= submit_tag "Invite player" %>
-  <% end -%>
-<% end -%>

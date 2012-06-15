@@ -39,7 +39,6 @@
 <ul class="menu" id="results">
 	<%= render :partial => 'result', :collection => @game.results.reverse %>
 </ul>
-
 <h3>Coins</h3>
 <table>
   <tbody>
@@ -76,6 +75,9 @@
     <%= render :partial => 'play', :collection => @game.plays %>
   </tbody>
 </table>
+<%= form_tag invite_game_path, :method => :put, :remote => true do %>
+	<%= text_field_tag :email, "", :class => "short" %> <%= submit_tag "Invite player" %>
+<% end -%> <br />
 
 <%= link_to 'Edit', edit_game_path(@game) %> |
 <%= link_to 'Back', games_path %>

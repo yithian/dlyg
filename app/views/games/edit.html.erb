@@ -2,5 +2,11 @@
 
 <%= render 'form' %>
 
+<h3>GM</h3>
+<%= form_for @game do |f| %>
+  <%= f.select :gm_id, options_from_collection_for_select(@game.players + [@game.gm], :id, :email) %><br />
+  <%= f.submit "Promote player to GM" %>
+<% end if can? :invite, @game -%>
+
 <%= link_to 'Show', @game %> |
 <%= link_to 'Back', games_path %>
