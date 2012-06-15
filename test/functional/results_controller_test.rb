@@ -17,7 +17,7 @@ class ResultsControllerTest < ActionController::TestCase
     @result.pain = ''
     @result.save!
     
-    xhr :put, :recall, id: @result, pool: 'discipline'
+    xhr :put, :recall, id: @result, pool: 'discipline', game_id: @result.game
     @result = Result.find(@result.id)
     
     assert_not_equal orig_win, @result.winner, "winner was not recalculated"
@@ -38,7 +38,7 @@ class ResultsControllerTest < ActionController::TestCase
     @result.pain = ''
     @result.save!
     
-    xhr :put, :recall, id: @result, pool: 'discipline'
+    xhr :put, :recall, id: @result, pool: 'discipline', game_id: @result.game
     @result = Result.find(@result.id)
     
     assert_not_equal orig_win, @result.winner, "winner was not recalculated"
@@ -58,7 +58,7 @@ class ResultsControllerTest < ActionController::TestCase
     @result.pain = ''
     @result.save!
     
-    xhr :put, :recall, id: @result, pool: 'discipline'
+    xhr :put, :recall, id: @result, pool: 'discipline', game_id: @result.game
     @result = Result.find(@result.id)
     
     assert_equal orig_win, @result.winner, "winner was recalculated"
@@ -71,7 +71,7 @@ class ResultsControllerTest < ActionController::TestCase
     game = @result.game
     
     assert_difference('Result.count', -1) do
-      delete :destroy, id: @result
+      delete :destroy, id: @result, game_id: @result.game
     end
 
     assert_redirected_to game_path(game)
@@ -79,13 +79,13 @@ class ResultsControllerTest < ActionController::TestCase
   
   test "shouldn't destroy result" do
     assert_no_difference "Result.count" do
-      delete :destroy, id: @result
+      delete :destroy, id: @result, game_id: @result.game
     end
     
     sign_in(users(:two))
     
     assert_no_difference "Result.count" do
-      delete :destroy, id: @result
+      delete :destroy, id: @result, game_id: @result.game
     end
   end
 end

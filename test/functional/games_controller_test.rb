@@ -219,7 +219,7 @@ class GamesControllerTest < ActionController::TestCase
   end
 
   test "shouldn't get edit" do
-    get :edit
+    get :edit, id: @game
     assert_redirected_to new_user_session_path, @response.message
   end
 
