@@ -48,7 +48,10 @@ class GamesController < ApplicationController
   # PUT /games/1.json
   def update
     # if the gm is changed, add the old one to the list of players
-    @game.players << @game.gm if params[:game][:gm_id] and params[:game][:gm_id] != @game.gm.id
+    if params[:game][:gm_id] and params[:game][:gm_id] != @game.gm.id
+      char = Character.create(:game_id => params[:id], :player_id => @game.gm.id)
+      Play.create(:game_id => params[:id], :user_id => @game.gm.id, :character_id => char.id)
+    end
   
     flash[:notice] = 'Game was successfully updated.' if @game.update_attributes(params[:game])
 
@@ -100,8 +103,13 @@ class GamesController < ApplicationController
   def invite
     @email = params[:email]
     user = User.find_by_email(@email)
+
+    unless @game.players.include?(user)
+      char = Character.create(:game_id => @game.id, :player_id => user.id)
+      Play.create(:user_id => user.id, :game_id => @game.id, :character_id => char.id)
+    end
     
-    @game.players << user unless @game.players.include?(user)
+    #@game.players << user unless @game.players.include?(user)
     
     respond_to do |format|
       format.js

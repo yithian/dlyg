@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  character_name: MyString
+  character: one
   user: one
   game: two
 
 two:
-  character_name: MyOtherString
+  character: two
   user: two
   game: one

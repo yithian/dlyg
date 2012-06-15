@@ -8,13 +8,13 @@ class PlayTest < ActiveSupport::TestCase
   test "can access attribures" do
     assert @play.user_id = users(:one).id
     assert @play.game_id = games(:one).id
-    assert @play.character_name = "a name"
+    assert @play.character_id = characters(:one).id
     assert @play.save
     @play = Play.find_by_id(plays(:one))
     
-    assert_equal users(:one).id, @play.user_id
+    assert_equal users(:one).id, @play.user.id
     assert_equal games(:one), @play.game
-    assert_equal "a name", @play.character_name
+    assert_equal characters(:one), @play.character
   end
   
   test "shouldn't save without foreign keys" do

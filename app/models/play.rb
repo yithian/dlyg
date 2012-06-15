@@ -8,9 +8,11 @@
 class Play < ActiveRecord::Base
   belongs_to :user
   belongs_to :game
+  belongs_to :character
 
-  attr_accessible :character_name, :game_id, :user_id
+  attr_accessible :character_id, :game_id, :user_id
   
   validates :game_id, :presence => true
   validates :user_id, :presence => true
+  validates :character_id, :presence => true
 end

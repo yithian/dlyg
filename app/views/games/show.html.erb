@@ -70,9 +70,9 @@
 </table> <br />
 
 <h3>Characters</h3>
-<table id="plays">
+<table id="characters">
   <tbody>
-    <%= render :partial => 'play', :collection => @game.plays %>
+    <%= render :partial => 'character', :collection => @game.characters %>
   </tbody>
 </table>
 <%= form_tag invite_game_path, :method => :put, :remote => true do %>

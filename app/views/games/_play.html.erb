@@ -1,9 +1,0 @@
-<tr>
-  <td><%= if can? :edit, play
-            form_for [@game, play] do |p|
-              p.text_field :character_name, :class => "short"
-            end 
-          else 
-            play.character_name
-          end -%>, played by <%= play.user.email %> <%= link_to image_tag('delete.png'), uninvite_game_path(:params => {:email => play.user.email}), :method => :put, :remote => true if can? :uninvite, @game %></td>
-</tr>

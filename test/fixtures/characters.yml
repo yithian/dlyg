@@ -34,6 +34,7 @@ two:
 
 three:
   game: two
+  player: three
   name: MyThirdString
   concept: MyThirdString
   keeping_awake: MyThirdText

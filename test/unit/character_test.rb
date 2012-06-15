@@ -5,12 +5,6 @@ class CharacterTest < ActiveSupport::TestCase
     @character = characters(:one)
   end
 
-  test "name is unique to game" do
-    @character.name = characters(:three).name
-
-    assert ! @character.save, "character was saved with a non-unique name"
-  end
-
   test "discipline and madness equal 3" do
     @character.discipline = 1
     @character.madness = 1

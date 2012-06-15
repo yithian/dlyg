@@ -1,0 +1,5 @@
+<tr>
+  <td><%= link_to image_tag('edit.png'), edit_game_character_path(character.game, character) if can? :edit, character %></td>
+  <td><%= link_to character.name, game_character_path(character.game, character) %>, played by <%= character.player.email %></td>
+  <td><%= link_to image_tag('delete.png'), uninvite_game_path(:params => {:email => character.player.email}), :method => :put, :remote => true if can? :uninvite, character.game %></td>
+</tr>
