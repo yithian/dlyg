@@ -24,7 +24,7 @@ class CharactersController < ApplicationController
 
     respond_to do |format|
       if @character.update_attributes(params[:character])
-        format.html { redirect_to @character, notice: 'Character was successfully updated.' }
+        format.html { redirect_to game_character_path(@character.game, @character), notice: 'Character was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
