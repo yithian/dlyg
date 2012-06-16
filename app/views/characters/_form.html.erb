@@ -12,61 +12,60 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :game_id %><br />
-    <%= f.number_field :game_id %>
-  </div>
-  <div class="field">
-    <%= f.label :player_id %><br />
-    <%= f.number_field :player_id %>
-  </div>
-  <div class="field">
-    <%= f.label :name %><br />
+    <h3><%= f.label :name %></h3>
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :concept %><br />
+    <h3><%= f.label :concept %></h3>
     <%= f.text_field :concept %>
   </div>
   <div class="field">
-    <%= f.label :keeping_awake %><br />
+    <h3><%= f.label :keeping_awake, "What's been keeping you awake?" %></h3>
     <%= f.text_area :keeping_awake %>
   </div>
   <div class="field">
-    <%= f.label :just_happened %><br />
+    <h3><%= f.label :just_happened, "What just happened?" %></h3>
     <%= f.text_area :just_happened %>
   </div>
   <div class="field">
-    <%= f.label :surface %><br />
+    <h3><%= f.label :surface, "What's on the surface?" %></h3>
     <%= f.text_area :surface %>
   </div>
   <div class="field">
-    <%= f.label :beneath %><br />
+    <h3><%= f.label :beneath, "What's beneath the surface?" %></h3>
     <%= f.text_area :beneath %>
   </div>
   <div class="field">
-    <%= f.label :path %><br />
+    <h3><%= f.label :path, "What's your path?" %></h3>
     <%= f.text_area :path %>
   </div>
+
   <div class="field">
-    <%= f.label :discipline %><br />
-    <%= f.number_field :discipline %>
-  </div>
-  <div class="field">
-    <%= f.label :exhaustion %><br />
-    <%= f.number_field :exhaustion %>
-  </div>
-  <div class="field">
-    <%= f.label :madness %><br />
-    <%= f.number_field :madness %>
-  </div>
-  <div class="field">
-    <%= f.label :e_talent %><br />
+    <h3><%= f.label :e_talent, "Exhaustion talent" %></h3>
     <%= f.text_area :e_talent %>
   </div>
   <div class="field">
-    <%= f.label :m_talent %><br />
+    <h3><%= f.label :m_talent, "Madness talent" %></h3>
     <%= f.text_area :m_talent %>
   </div>
+  
+  <table>
+  	<thead>
+		<tr>
+			<th><%= f.label :discipline %></th>
+			<th><%= f.label :exhaustion %></th>
+			<th><%= f.label :madness %></th>
+		</tr>
+  	</thead>
+	<tbody>
+		<tr>
+			<td><%= f.number_field :discipline, :min => 0, :max => 3, :autocomplete => :off %></td>
+			<td><%= f.number_field :exhaustion, :min => 0, :max => 6, :autocomplete => :off %></td>
+			<td><%= f.number_field :madness, :min => 0, :max => 3, :autocomplete => :off %></td>
+		</tr>
+	</tbody>
+  </table>
+
   <div class="actions">
     <%= f.submit %>
   </div>
