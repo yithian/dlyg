@@ -105,6 +105,14 @@
   
     <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
   
+    <li><a href="./BalancesDisciplineValidator.html">BalancesDisciplineValidator</a>
+  
+    <li><a href="./Character.html">Character</a>
+  
+    <li><a href="./CharactersController.html">CharactersController</a>
+  
+    <li><a href="./CharactersHelper.html">CharactersHelper</a>
+  
     <li><a href="./Game.html">Game</a>
   
     <li><a href="./GameHelper.html">GameHelper</a>
@@ -180,7 +188,7 @@ and for dice results. This is also where rolling dice occurs.</p>
 
           
           <div class="method-source-code" id="cast_shadow-source">
-            <pre><span class="ruby-comment"># File app/models/game.rb, line 60</span>
+            <pre><span class="ruby-comment"># File app/models/game.rb, line 61</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">cast_shadow</span>(<span class="ruby-identifier">coins</span> = <span class="ruby-value">1</span>)
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">despair</span> <span class="ruby-operator">-=</span> <span class="ruby-identifier">coins</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">hope</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">coins</span>
@@ -212,7 +220,7 @@ for discipline, exhaustion, madness and pain pools</p>
 
           
           <div class="method-source-code" id="roll-source">
-            <pre><span class="ruby-comment"># File app/models/game.rb, line 19</span>
+            <pre><span class="ruby-comment"># File app/models/game.rb, line 20</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">roll</span>(<span class="ruby-identifier">discipline_dice</span> = <span class="ruby-value">0</span>, <span class="ruby-identifier">exhaustion_dice</span> = <span class="ruby-value">0</span>, <span class="ruby-identifier">madness_dice</span> = <span class="ruby-value">0</span>, <span class="ruby-identifier">pain_dice</span> = <span class="ruby-value">0</span>, <span class="ruby-identifier">char_name</span> = <span class="ruby-string">'player'</span>)
   <span class="ruby-comment"># in case an empty name is passed</span>
   <span class="ruby-identifier">char_name</span> = <span class="ruby-string">'player'</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">char_name</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">char_name</span>.<span class="ruby-identifier">empty?</span>
@@ -278,7 +286,7 @@ for discipline, exhaustion, madness and pain pools</p>
 
           
           <div class="method-source-code" id="shed_light-source">
-            <pre><span class="ruby-comment"># File app/models/game.rb, line 66</span>
+            <pre><span class="ruby-comment"># File app/models/game.rb, line 67</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">shed_light</span>(<span class="ruby-identifier">coins</span> = <span class="ruby-value">1</span>)
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">hope</span> <span class="ruby-operator">-=</span> <span class="ruby-identifier">coins</span>
 <span class="ruby-keyword">end</span></pre>
@@ -308,7 +316,7 @@ for discipline, exhaustion, madness and pain pools</p>
 
           
           <div class="method-source-code" id="to_param-source">
-            <pre><span class="ruby-comment"># File app/models/game.rb, line 71</span>
+            <pre><span class="ruby-comment"># File app/models/game.rb, line 72</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">to_param</span>
   <span class="ruby-node">&quot;#{self.id}_#{self.name.gsub(/[ '&quot;#%\{\}|\\^~\[\]`]/, '-').gsub(/[.&amp;?\/:;=@]/, '')}&quot;</span>    
 <span class="ruby-keyword">end</span></pre>

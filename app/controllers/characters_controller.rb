@@ -1,3 +1,6 @@
+# the character controller only has actions to show and alter existing
+# characters. new ones are created via GamesController#invite
+
 class CharactersController < ApplicationController
   load_and_authorize_resource
 
