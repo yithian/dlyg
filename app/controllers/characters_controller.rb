@@ -2,37 +2,32 @@
 # characters. new ones are created via GamesController#invite
 
 class CharactersController < ApplicationController
+  respond_to :html, :xml
   load_and_authorize_resource
+  before_filter :find_character
 
   # GET /characters/1
   # GET /characters/1.json
   def show
-    @character = Character.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @character }
-    end
+    respond_with @character
   end
 
   # GET /characters/1/edit
   def edit
-    @character = Character.find(params[:id])
   end
 
   # PUT /characters/1
   # PUT /characters/1.json
   def update
-    @character = Character.find(params[:id])
+    flash[:notice] = 'Character was successfully updated.' if @character.update_attributes(params[:game])
 
-    respond_to do |format|
-      if @character.update_attributes(params[:character])
-        format.html { redirect_to game_character_path(@character.game, @character), notice: 'Character was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @character.errors, status: :unprocessable_entity }
-      end
-    end
+    respond_with @character.game, @character
+  end
+  
+  private
+  
+  # set up the @character variable
+  def find_character
+    @character = Character.find(params[:id])
   end
 end
