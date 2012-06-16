@@ -1,74 +1,67 @@
-<p id="notice"><%= notice %></p>
+<h2><%= @character.name %></h2>
 
+<h3>Concept</h3>
 <p>
-  <b>Game:</b>
-  <%= @character.game_id %>
-</p>
-
-<p>
-  <b>Player:</b>
-  <%= @character.player_id %>
-</p>
-
-<p>
-  <b>Name:</b>
-  <%= @character.name %>
-</p>
-
-<p>
-  <b>Concept:</b>
   <%= @character.concept %>
 </p>
 
+<h3>Game</h3>
 <p>
-  <b>Keeping awake:</b>
+  <%= @character.game.name %>
+</p>
+
+<h3>Player</h3>
+<p>
+  <%= @character.player.email %>
+</p>
+
+<h3>What's been keeping you awake?</h3>
+<p>
   <%= @character.keeping_awake %>
 </p>
 
+<h3>What just happened to you?</h3>
 <p>
-  <b>Just happened:</b>
   <%= @character.just_happened %>
 </p>
 
+<h3>What's on the surface?</h3>
 <p>
-  <b>Surface:</b>
   <%= @character.surface %>
 </p>
 
+<h3>What lies beneath?</h3>
 <p>
-  <b>Beneath:</b>
   <%= @character.beneath %>
 </p>
 
+<h3>What's your path?</h3>
 <p>
-  <b>Path:</b>
   <%= @character.path %>
 </p>
 
+<h3>Exhaustion talent:</h3>
 <p>
-  <b>Discipline:</b>
-  <%= @character.discipline %>
-</p>
-
-<p>
-  <b>Exhaustion:</b>
-  <%= @character.exhaustion %>
-</p>
-
-<p>
-  <b>Madness:</b>
-  <%= @character.madness %>
-</p>
-
-<p>
-  <b>E talent:</b>
   <%= @character.e_talent %>
 </p>
 
+<h3>Madness talent:</h3>
 <p>
-  <b>M talent:</b>
   <%= @character.m_talent %>
 </p>
+
+<table id="attributes">
+	<thead>
+		<th>Discipline</th>
+		<th>Exhaustion</th>
+		<th>Madness</th>
+	</thead>
+	<tbody>
+		<td><%= @character.discipline %></td>
+		<td><%= @character.exhaustion %></td>
+		<td><%= @character.madness %></td>
+	</tbody>
+</table>
 
 
 <%= link_to 'Edit', edit_game_character_path(@character.game, @character) %> |
