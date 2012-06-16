@@ -118,11 +118,12 @@ class GamesController < ApplicationController
   
   # PUT /games/1/uninvite
   def uninvite
-    @email = params[:email]
-    user = User.find_by_email(@email)
+    email = params[:email]
+    user = User.find_by_email(email)
     @id = user.id
     
     @game.players.delete(user)
+    Character.find_by_player_id_and_game_id(user.id, @game.id).delete
     
     respond_to do |format|
       format.js

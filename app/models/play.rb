@@ -8,7 +8,7 @@
 class Play < ActiveRecord::Base
   belongs_to :user
   belongs_to :game
-  belongs_to :character
+  belongs_to :character, :dependent => :destroy
 
   attr_accessible :character_id, :game_id, :user_id
   

@@ -169,8 +169,12 @@ class GamesControllerTest < ActionController::TestCase
   test "should invite players" do
     sign_in(users(:one))
     
-    xhr :put, :invite, :id => @game.id, :email => users(:one).email
-    @game = Game.find_by_id(games(:one).id)
+    assert_difference "Play.count", +1 do
+      assert_difference "Character.count", +1 do
+        xhr :put, :invite, :id => @game.id, :email => users(:one).email
+        @game = Game.find_by_id(games(:one).id)
+      end
+    end
     
     assert @game.players.include?(users(:one)), "player wasn't invited correctly"
     
@@ -195,8 +199,12 @@ class GamesControllerTest < ActionController::TestCase
   test "should uninvite players" do
     sign_in(users(:one))
     
-    xhr :put, :uninvite, :id => @game.id, :email => users(:two).email
-    @game = Game.find_by_id(games(:one).id)
+    assert_difference "Play.count", -1 do
+      assert_difference "Character.count", -1 do
+        xhr :put, :uninvite, :id => @game.id, :email => users(:two).email
+        @game = Game.find_by_id(games(:one).id)
+      end
+    end
     
     assert @game.players.empty?, "didn't uninvite player"
     
