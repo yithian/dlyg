@@ -63,6 +63,21 @@
 	</tbody>
 </table>
 
+<table>
+	<thead>
+		<tr>
+			<th>Fight</th>
+			<th>Flight</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><%= raw check_format(@character.fight) %></td>
+			<td><%= raw check_format(@character.flight) %></td>
+		</tr>
+	</tbody>
+</table>
+
 
 <%= link_to 'Edit', edit_game_character_path(@character.game, @character) %> |
 <%= link_to 'Back', game_path(@character.game) %>

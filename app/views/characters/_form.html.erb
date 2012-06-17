@@ -65,6 +65,17 @@
 		</tr>
 	</tbody>
   </table>
+  
+  <table>
+  	<thead>
+  		<th>Fight</th>
+		<th>Flight</th>
+  	</thead>
+	<tbody>
+		<td><%= f.number_field :fight, :min => 0, :max => 3, :autocomplete => :off %></td>
+		<td><%= f.number_field :flight, :min => 0, :max => 3, :autocomplete => :off %></td>
+	</tbody>
+  </table>
 
   <div class="actions">
     <%= f.submit %>

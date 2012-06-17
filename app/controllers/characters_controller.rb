@@ -19,7 +19,7 @@ class CharactersController < ApplicationController
   # PUT /characters/1
   # PUT /characters/1.json
   def update
-    flash[:notice] = 'Character was successfully updated.' if @character.update_attributes(params[:game])
+    flash[:notice] = 'Character was successfully updated.' if @character.update_attributes(params[:character])
 
     respond_with @character.game, @character
   end
