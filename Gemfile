@@ -9,6 +9,7 @@ gem 'mysql2'
 gem 'dice_roller'
 gem 'jquery-rails'
 gem 'devise'
+gem 'devise_invitable'
 gem 'cancan'
 
 gem 'thor', '0.14.6'
