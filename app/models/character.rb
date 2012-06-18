@@ -9,4 +9,9 @@ class Character < ActiveRecord::Base
   validates :discipline, :numericality => {:only_integer => true, :greater_than_or_equal_to => 0, :less_than_or_equal_to => 3}
   validates :exhaustion, :numericality => {:only_integer => true, :greater_than_or_equal_to => 0, :less_than_or_equal_to => 6}
   validates :madness, :numericality => {:only_integer => true, :greater_than_or_equal_to => 0, :less_than_or_equal_to => 3}, :balances_discipline => true
+  
+  # show game name in url
+  def to_param
+    "#{self.id}_#{self.name.gsub(/[ '"#%\{\}|\\^~\[\]`]/, '-').gsub(/[.&?\/:;=@]/, '')}"    
+  end
 end
