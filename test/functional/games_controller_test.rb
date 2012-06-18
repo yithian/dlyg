@@ -172,9 +172,9 @@ class GamesControllerTest < ActionController::TestCase
     assert_difference "Play.count", +1 do
       assert_difference "Character.count", +1 do
         xhr :put, :invite, :id => @game.id, :email => users(:one).email
-        @game = Game.find_by_id(games(:one).id)
       end
     end
+    @game = Game.find_by_id(games(:one).id)
     
     assert @game.players.include?(users(:one)), "player wasn't invited correctly"
     

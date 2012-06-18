@@ -103,6 +103,7 @@ class GamesController < ApplicationController
   def invite
     @email = params[:email]
     user = User.find_by_email(@email)
+    user = User.invite!(:email => @email) unless user
 
     unless @game.players.include?(user)
       char = Character.create(:game_id => @game.id, :player_id => user.id)
