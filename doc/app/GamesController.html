@@ -374,9 +374,10 @@ dice, inviting/uninviting players, etc</p>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">invite</span>
   <span class="ruby-ivar">@email</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:email</span>]
   <span class="ruby-identifier">user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_email</span>(<span class="ruby-ivar">@email</span>)
+  <span class="ruby-identifier">user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">invite!</span>(<span class="ruby-value">:email</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@email</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">user</span>
 
   <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@game</span>.<span class="ruby-identifier">players</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">user</span>)
-    <span class="ruby-identifier">char</span> = <span class="ruby-constant">Character</span>.<span class="ruby-identifier">create</span>(<span class="ruby-value">:game_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@game</span>.<span class="ruby-identifier">id</span>, <span class="ruby-value">:player_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">id</span>)
+    <span class="ruby-identifier">char</span> = <span class="ruby-constant">Character</span>.<span class="ruby-identifier">create</span>(<span class="ruby-value">:name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">''</span>, <span class="ruby-value">:game_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@game</span>.<span class="ruby-identifier">id</span>, <span class="ruby-value">:player_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">id</span>)
     <span class="ruby-constant">Play</span>.<span class="ruby-identifier">create</span>(<span class="ruby-value">:user_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">id</span>, <span class="ruby-value">:game_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@game</span>.<span class="ruby-identifier">id</span>, <span class="ruby-value">:character_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">char</span>.<span class="ruby-identifier">id</span>)
   <span class="ruby-keyword">end</span>
   
@@ -544,7 +545,7 @@ dice, inviting/uninviting players, etc</p>
 
           
           <div class="method-source-code" id="uninvite-source">
-            <pre><span class="ruby-comment"># File app/controllers/games_controller.rb, line 120</span>
+            <pre><span class="ruby-comment"># File app/controllers/games_controller.rb, line 121</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">uninvite</span>
   <span class="ruby-identifier">email</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:email</span>]
   <span class="ruby-identifier">user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_email</span>(<span class="ruby-identifier">email</span>)
