@@ -276,13 +276,15 @@ class GamesControllerTest < ActionController::TestCase
     assert_redirected_to games_path
   end
 
-  test "shouldn't destroy game" do
+  test "shouldn't destroy game as nobody" do
     assert_no_difference('Game.count', -1) do
       delete :destroy, id: @game
     end
 
     assert_redirected_to new_user_session_path
+  end
 
+  test "shouldn't destroy other users' games" do
     sign_in(users(:two))
   
     assert_no_difference('Game.count', -1) do

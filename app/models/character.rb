@@ -12,6 +12,7 @@ class Character < ActiveRecord::Base
   
   # show game name in url
   def to_param
-    "#{self.id}_#{self.name.gsub(/[ '"#%\{\}|\\^~\[\]`]/, '-').gsub(/[.&?\/:;=@]/, '')}"    
+    name = self.name || ''
+    "#{self.id}_#{name.gsub(/[ '"#%\{\}|\\^~\[\]`]/, '-').gsub(/[.&?\/:;=@]/, '')}"    
   end
 end
