@@ -19,11 +19,11 @@ class PlayTest < ActiveSupport::TestCase
   
   test "shouldn't save without foreign keys" do
     assert_no_difference "Play.count" do
-      Play.create(:game_id => games(:one))
+      Play.create(:game_id => games(:one).id)
     end
     
     assert_no_difference "Play.count" do
-      Play.create(:user_id => users(:one))
+      Play.create(:user_id => users(:one).id)
     end
   end
 end

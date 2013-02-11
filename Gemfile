@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.8'
+gem 'rails', '3.2.12'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -11,8 +11,6 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'devise_invitable'
 gem 'cancan'
-
-gem 'thor', '0.14.6'
 
 # Gems used only for assets and not required
 # in production environments by default.
