@@ -52,7 +52,7 @@ class GamesController < ApplicationController
       char = Character.create(:game_id => params[:id], :player_id => @game.gm.id)
       Play.create(:game_id => params[:id], :user_id => @game.gm.id, :character_id => char.id)
     end
-  
+
     flash[:notice] = 'Game was successfully updated.' if @game.update_attributes(params[:game])
 
     respond_with @game
@@ -68,37 +68,37 @@ class GamesController < ApplicationController
       #format.json { head :no_content }
     end
   end
-  
+
   # POST /games/1/roll_dice
   def roll_dice
-    name = @game.plays.collect { |p| p.character_name if p.user == current_user }
+    name = @game.plays.collect { |p| p.character.name if p.user == current_user }
     @result = @game.roll(params[:discipline].to_i, params[:exhaustion].to_i, params[:madness].to_i, params[:pain].to_i, name.first)
 
     respond_to do |format|
       format.js
     end
   end
-  
+
   # PUT /games/1/cast_shadow
   def cast_shadow
     @game.cast_shadow(params[:despair_coins].to_i)
     @game.save
-    
+
     respond_to do |format|
       format.js
     end
   end
-  
+
   # PUT /games/1/cast_shadow
   def shed_light
     @game.shed_light(params[:hope_coins].to_i)
     @game.save
-    
+
     respond_to do |format|
       format.js
     end
   end
-  
+
   # PUT /games/1/invite
   def invite
     @email = params[:email]
@@ -109,23 +109,23 @@ class GamesController < ApplicationController
       char = Character.create(:name => '', :game_id => @game.id, :player_id => user.id)
       Play.create(:user_id => user.id, :game_id => @game.id, :character_id => char.id)
     end
-    
+
     #@game.players << user unless @game.players.include?(user)
-    
+
     respond_to do |format|
       format.js
     end
   end
-  
+
   # PUT /games/1/uninvite
   def uninvite
     email = params[:email]
     user = User.find_by_email(email)
     @id = user.id
-    
+
     @game.players.delete(user)
     Character.find_by_player_id_and_game_id(user.id, @game.id).delete
-    
+
     respond_to do |format|
       format.js
     end
