@@ -5,10 +5,12 @@
 #   gem 'sqlite3'
 development:
   adapter: mysql2
-  database: dlygdev
+  encoding: utf8
+  database: <%=ENV['OPENSHIFT_APP_NAME']%>
   pool: 5
-  timeout: 5000
-  socket: /tmp/mysql.sock
+  username: <%= ENV['OPENSHIFT_DB_USERNAME'] %>
+  password: <%= ENV['OPENSHIFT_DB_PASSWORD'] %>
+  socket: <%= ENV['OPENSHIFT_DB_SOCKET'] %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
