@@ -12,6 +12,7 @@ gem 'devise'
 gem 'devise_invitable'
 gem 'cancan'
 gem 'protected_attributes'
+gem 'rack', '~> 1.5.2'
 
 # Gems used only for assets and not required
 # in production environments by default.
