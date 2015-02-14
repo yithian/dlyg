@@ -3,7 +3,7 @@
 class User < ActiveRecord::Base
   has_many :running_games, :foreign_key => :gm_id
   has_many :plays, :dependent => :destroy
-  has_many :games, :through => :plays, :uniq => true
+  has_many :games, :through => :plays
   has_many :characters, :dependent => :destroy
 
   # Include default devise modules. Others available are:

@@ -58,5 +58,7 @@ module Dlyg
 
     # add fonts
     config.assets.paths << "#{Rails.root}/app/assets/fonts"
+
+    Bundler.require(*Rails.groups)
   end
 end

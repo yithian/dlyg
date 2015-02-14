@@ -11,7 +11,7 @@ Dlyg::Application.routes.draw do
     end
 
     resources :plays, :only => [:create, :update, :destroy]
-    
+
     resources :results do
       member do
         put 'recall'
@@ -21,7 +21,7 @@ Dlyg::Application.routes.draw do
     resources :characters, :except => [:index, :new, :create, :destroy]
   end
 
-  match '/about' => 'static#about', :as => 'about'
+  get '/about' => 'static#about', :as => 'about'
 
   root :to => 'games#index'
 
