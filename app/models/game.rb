@@ -9,8 +9,6 @@ class Game < ActiveRecord::Base
   has_many :results, :dependent => :destroy
   has_many :characters, :through => :plays
 
-  attr_accessible :despair, :hope, :name, :gm_id
-
   validates :despair, :numericality => {:only_integer => true, :greater_than_or_equal_to => 0}
   validates :hope, :numericality => {:only_integer => true, :greater_than_or_equal_to => 0}
 

@@ -5,7 +5,7 @@
 class GamesController < ApplicationController
   respond_to :html, :xml
   load_and_authorize_resource
-  before_filter :find_game, :only => [:new, :show, :edit, :update, :destroy, :roll_dice, :cast_shadow, :shed_light, :invite, :uninvite]
+  before_action :find_game, :only => [:new, :show, :edit, :update, :destroy, :roll_dice, :cast_shadow, :shed_light, :invite, :uninvite]
 
   # GET /games
   # GET /games.json
@@ -36,7 +36,7 @@ class GamesController < ApplicationController
   # POST /games
   # POST /games.json
   def create
-    @game = Game.new(params[:game])
+    @game = Game.new(game_params)
     @game.gm = current_user
 
     flash[:notice] = 'Game was successfully created.' if @game.save
@@ -53,7 +53,7 @@ class GamesController < ApplicationController
       Play.create(:game_id => params[:id], :user_id => @game.gm.id, :character_id => char.id)
     end
 
-    flash[:notice] = 'Game was successfully updated.' if @game.update_attributes(params[:game])
+    flash[:notice] = 'Game was successfully updated.' if @game.update_attributes(game_params)
 
     respond_with @game
   end
@@ -140,5 +140,9 @@ class GamesController < ApplicationController
     else
       @game = Game.find_by_id(params[:id])
     end
+  end
+
+  def game_params
+    params.require(:game).permit(:name, :despair, :hope, :gm_id)
   end
 end

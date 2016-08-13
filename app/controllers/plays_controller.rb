@@ -6,11 +6,11 @@
 class PlaysController < ApplicationController
   respond_to :html, :xml
   load_and_authorize_resource
-  before_filter :find_play, :only => [:update, :destroy]
+  before_action :find_play, :only => [:update, :destroy]
 
   # POST /games/1/play/1
   def create
-    @play = Play.new(params[:play])
+    @play = Play.new(play_params)
     @play.save
 
     respond_with @play.game
@@ -18,7 +18,7 @@ class PlaysController < ApplicationController
 
   # PUT /games/1/play/1
   def update
-    @play.update_attributes(params[:play])
+    @play.update_attributes(play_params)
 
     respond_with @play.game
   end
@@ -35,8 +35,13 @@ class PlaysController < ApplicationController
 
   private
 
-  # set up a variable as a before_filter
+  # set up a variable as a before_action
   def find_play
     @play = Play.find_by_id(params[:id])
+  end
+
+  # generate strong parameters
+  def play_params
+    params.require(:play).permit(:character_id, :game_id, :user_id, :character_id)
   end
 end

@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.0'
+gem 'rails', '5.0.0.1'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -10,9 +10,7 @@ gem 'dice_roller'
 gem 'jquery-rails'
 gem 'devise'
 gem 'devise_invitable'
-gem 'cancan'
-gem 'protected_attributes'
-gem 'rack', '~> 1.5.2'
+gem 'cancancan'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -24,6 +22,10 @@ group :assets do
   # gem 'therubyracer', :platform => :ruby
 
   gem 'uglifier', '>= 1.2.4'
+end
+
+group :test do
+  gem 'rails-controller-testing'
 end
 
 # To use ActiveModel has_secure_password

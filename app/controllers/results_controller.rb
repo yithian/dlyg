@@ -4,7 +4,7 @@
 class ResultsController < ApplicationController
   respond_to :html, :xml
   load_and_authorize_resource
-  before_filter :find_result
+  before_action :find_result
 
   # DELETE /games/1/results/1
   # DELETE /games/1/results/1.json
@@ -17,13 +17,13 @@ class ResultsController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
   # PUT /games/1/result/1/recall
   def recall
     former_domminating = @result.dominating
-    
+
     @result.recall!(params[:pool])
-    
+
     if former_domminating == 'pain' and @result.dominating != 'pain'
       game = @result.game
       game.despair -= 1
@@ -34,10 +34,10 @@ class ResultsController < ApplicationController
       format.js
     end
   end
-  
+
   private
-  
-  # set the result variable as a before_filter
+
+  # set the result variable as a before_action
   def find_result
     @result = Result.find_by_id(params[:id])
   end
