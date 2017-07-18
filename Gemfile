@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '5.0.1'
+gem 'rails', '5.1.2'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -15,13 +15,13 @@ gem 'cancancan'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 5.0.1'
-  gem 'coffee-rails', '~> 4.1.0'
+  gem 'sass-rails',   '~> 5.0.6'
+  gem 'coffee-rails', '~> 4.2.2'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platform => :ruby
 
-  gem 'uglifier', '>= 1.2.4'
+  gem 'uglifier', '>= 3.2.0'
 end
 
 group :test do
