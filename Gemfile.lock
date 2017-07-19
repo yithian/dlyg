@@ -85,6 +85,7 @@ GEM
     nokogiri (1.8.0)
       mini_portile2 (~> 2.2.0)
     orm_adapter (0.5.0)
+    puma (3.9.1)
     rack (2.0.3)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -164,6 +165,7 @@ DEPENDENCIES
   dice_roller
   jquery-rails
   mysql2
+  puma
   rails (= 5.1.2)
   rails-controller-testing
   sass-rails (~> 5.0.6)
