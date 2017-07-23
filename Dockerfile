@@ -26,4 +26,6 @@ RUN chown -R ${APPUSER}:${APPUSER} ${APPDIR}
 
 USER ${APPUSER}
 EXPOSE 9292
-CMD ["bundle", "exec", "puma"]
+CMD ["./script/dlyg.sh"]
+HEALTHCHECK --interval=10s --timeout=3s --start-period=5s \
+    CMD curl -f http://localhost:9292/ || exit 1
