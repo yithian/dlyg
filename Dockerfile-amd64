@@ -1,4 +1,4 @@
-FROM fedora:latest
+FROM arm64v8/fedora:latest
 LABEL maintainer='Alex Chvatal <yith@yuggoth.space>'
 
 ENV RAILS_ENV=production \
