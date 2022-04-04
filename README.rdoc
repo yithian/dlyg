@@ -1,3 +1,5 @@
+DLYG IS NO LONGER MAINTAINED, USE AT YOUR OWN RISK
+
 == Don't Lose Your \Game
 
 Don't Lose Your \Game (or, dlyg for the lazy like myself) is an application
